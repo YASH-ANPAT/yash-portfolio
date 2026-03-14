@@ -72,9 +72,13 @@ export default function App() {
               </button>
             </a>
 
-            <button className="px-6 py-3 rounded-xl bg-blue-500 hover:bg-blue-600 hover:scale-105 transition duration-300 shadow-lg shadow-blue-500/30">
+            <a
+              href="/Yash_Anpat_Resume.pdf"
+              download
+              className="px-6 py-3 rounded-xl border border-gray-600 hover:border-white hover:scale-105 transition duration-300"
+            >
               Download Resume
-            </button>
+            </a>
 
           </div>
 
