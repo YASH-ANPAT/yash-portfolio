@@ -24,10 +24,16 @@ export default function App() {
 
   const projects = [
     {
-      title: "Hospital Management System",
+      title: "NewsHub (News API Web App)",
+      desc: "A Flask-based web application that fetches real-time news using NewsAPI, allowing users to search topics and view articles with a clean UI.",
+      tech: "Python · Flask · HTML · CSS · REST API",
+      link: "https://github.com/YASH-ANPAT/news-api-flask-project"
+    },
+    {
+      title: "MediKeeps(Hospital Management System)",
       desc: "A full-stack system designed to manage hospital operations including doctors, patients, and appointment scheduling.",
       tech: "Python · Django · HTML · CSS · Database",
-      link: "https://github.com/YASH-ANPAT"
+      link: "https://github.com/YASH-ANPAT/medikeeps-hospital-management-system"
     },
     {
       title: "School Management System",
@@ -35,18 +41,6 @@ export default function App() {
       tech: "Python · SQL · HTML · CSS",
       link: "https://github.com/YASH-ANPAT"
     },
-    {
-      title: "AI Chatbot",
-      desc: "Conversational assistant powered by AI models.",
-      tech: "Python · NLP · APIs",
-      link: "https://github.com/YASH-ANPAT"
-    },
-    {
-      title: "Resume Analyzer",
-      desc: "Analyzes resumes and suggests improvements.",
-      tech: "Python · Machine Learning",
-      link: "https://github.com/YASH-ANPAT"
-    }
   ];
 
 
