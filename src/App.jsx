@@ -6,7 +6,7 @@ import { AiOutlineApi } from "react-icons/ai";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -18,6 +18,37 @@ export default function App() {
       once: true,
     });
   }, []);
+
+
+  const [currentProject, setCurrentProject] = useState(0);
+
+  const projects = [
+    {
+      title: "Hospital Management System",
+      desc: "A full-stack system designed to manage hospital operations including doctors, patients, and appointment scheduling.",
+      tech: "Python · Django · HTML · CSS · Database",
+      link: "https://github.com/YASH-ANPAT"
+    },
+    {
+      title: "School Management System",
+      desc: "A system designed to manage student records and administrative operations efficiently.",
+      tech: "Python · SQL · HTML · CSS",
+      link: "https://github.com/YASH-ANPAT"
+    },
+    {
+      title: "AI Chatbot",
+      desc: "Conversational assistant powered by AI models.",
+      tech: "Python · NLP · APIs",
+      link: "https://github.com/YASH-ANPAT"
+    },
+    {
+      title: "Resume Analyzer",
+      desc: "Analyzes resumes and suggests improvements.",
+      tech: "Python · Machine Learning",
+      link: "https://github.com/YASH-ANPAT"
+    }
+  ];
+
 
 
   return (
@@ -41,7 +72,7 @@ export default function App() {
           <a href="#about" className="hover:text-blue-400 transition scroll-mt-24">About</a>
           <a href="#skills" className="hover:text-blue-400 transition scroll-mt-24">Skills</a>
           <a href="#projects" className="hover:text-blue-400 transition scroll-mt-24">Projects</a>
-          <a href="#future-projects" className="hover:text-blue-400 transition scroll-mt-24">AI Lab</a>
+          <a href="#future-projects" className="hover:text-blue-400 transition scroll-mt-24">AI Lab </a>
           <a href="#contact" className="hover:text-blue-400 transition scroll-mt-24">Contact</a>
         </div>
 
@@ -51,7 +82,7 @@ export default function App() {
       <main className="relative z-10">
         {/* HERO SECTION */}
         <section data-aos="slide-down" id="hero" className="min-h-[calc(100vh-10px)] flex flex-col items-center justify-center text-center px-6 relative z-10">
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-normal bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent pb-2">
             Yash Anpat
           </h1>
 
@@ -107,7 +138,7 @@ export default function App() {
 
             <p className="text-gray-400 mt-6 leading-relaxed">
               My main tools are Python, Machine Learning, and full-stack
-              development. I enjoy creating real systems — from hospital
+              development. I enjoy creating real systems, from hospital
               management platforms to data-driven applications.
             </p>
 
@@ -185,62 +216,83 @@ export default function App() {
           className="min-h-screen flex flex-col items-center justify-center text-center px-6 relative z-10"
         >
 
-          <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent pb-1 ">
             Projects
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-10 max-w-5xl">
+          <div className="relative w-full max-w-6xl mx-auto py-20">
 
-            {/* Hospital */}
-            <div data-aos="zoom-in duration:1500" className="p-8 border border-gray-700 rounded-xl hover:border-blue-400 hover:-translate-y-2 transition duration-300 text-left bg-black/40 backdrop-blur">
+            {/* LEFT BUTTON */}
+            <button
+              onClick={() =>
+                setCurrentProject(
+                  (currentProject - 1 + projects.length) % projects.length
+                )
+              }
+              className="absolute left-[-60px] top-1/2 -translate-y-1/2 z-10 text-4xl text-gray-400 hover:text-white"
+            >
+              ‹
+            </button>
 
-              <h3 className="text-2xl font-semibold mb-4">
-                Hospital Management System
-              </h3>
+            {/* CARDS */}
+            <div className="w-full flex justify-center overflow-visible">
 
-              <p className="text-gray-400 mb-4">
-                A full-stack system designed to manage hospital operations including doctors, patients, and appointment scheduling.
-              </p>
-
-              <p className="text-sm text-gray-500 mb-6">
-                Tech Stack: Python · Django · HTML · CSS · Database
-              </p>
-
-              <a
-                href="https://github.com/YASH-ANPAT"
-                target="_blank"
-                className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-sm transition"
+              {/* SLIDING TRACK */}
+              <div
+                className="flex transition-all duration-700 ease-in-out"
+                style={{
+                  transform: `translateX(calc(50% - ${(currentProject * 340 + 150)}px))`
+                }}
               >
-                View Code
-              </a>
 
-            </div>
+                {projects.map((project, index) => (
 
+                  <div
+                    key={index}
+                    className={`w-[300px] mx-[20px] p-6 rounded-xl border backdrop-blur text-left transition-all duration-500
+        ${index === currentProject
+                        ? "scale-110 border-blue-400 bg-black/60 shadow-2xl shadow-blue-500/40 z-10"
+                        : "scale-90 opacity-40 border-gray-700 bg-black/30 blur-[1px]"
+                      }`}
+                  >
 
-            {/* School */}
-            <div data-aos="zoom-in duration:1500" className="p-8 border border-gray-700 rounded-xl hover:border-blue-400 hover:-translate-y-2 transition duration-300 text-left bg-black/40 backdrop-blur">
+                    <h3 className="text-xl font-semibold mb-3">
+                      {project.title}
+                    </h3>
 
-              <h3 className="text-2xl font-semibold mb-4">
-                School Management System
-              </h3>
+                    <p className="text-gray-400 mb-3">
+                      {project.desc}
+                    </p>
 
-              <p className="text-gray-400 mb-4">
-                A system designed to manage student records, staff information and administrative operations efficiently.
-              </p>
+                    <p className="text-sm text-gray-500 mb-4">
+                      {project.tech}
+                    </p>
 
-              <p className="text-sm text-gray-500 mb-6">
-                Tech Stack: Python · SQL Database · HTML · CSS
-              </p>
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-sm transition"
+                    >
+                      View Code
+                    </a>
 
-              <a
-                href="https://github.com/YASH-ANPAT"
-                target="_blank"
-                className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-sm transition"
-              >
-                View Code
-              </a>
+                  </div>
 
-            </div>
+                ))}
+
+              </div> {/* ✅ CLOSE sliding track */}
+
+            </div> {/* ✅ CLOSE overflow wrapper */}
+
+            {/* RIGHT BUTTON */}
+            <button
+              onClick={() =>
+                setCurrentProject((currentProject + 1) % projects.length)
+              }
+              className="absolute right-[-60px] top-1/2 -translate-y-1/2 z-10 text-4xl text-gray-400 hover:text-white"
+            >
+              ›
+            </button>
 
           </div>
 
@@ -254,7 +306,7 @@ export default function App() {
           className="min-h-screen flex flex-col items-center justify-center text-center px-6 relative z-10"
         >
 
-          <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent pb-1">
             AI Project Lab
           </h2>
 
