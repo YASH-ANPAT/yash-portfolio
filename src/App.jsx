@@ -46,7 +46,7 @@ export default function App() {
 
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className=" overflow-x-hidden bg-black text-white min-h-screen">
 
       {/* GLOBAL BACKGROUND */}
       <div className="fixed inset-0 bg-gradient-to-br from-blue-900 via-black to-purple-900 opacity-40"></div>
@@ -475,8 +475,30 @@ export default function App() {
 
           {/* Bottom line */}
           <div className="text-center text-gray-500 text-sm mt-10 border-t border-gray-800 pt-6">
-            © {new Date().getFullYear()} Yash Anpat · Built with React & Tailwind CSS
+
+            <p>
+              © {new Date().getFullYear()} Yash Anpat · Built with React & Tailwind CSS
+            </p>
+
+            {/* 👇 VISITOR COUNTER */}
+            <p className="mt-4 text-gray-400 text-sm flex items-center justify-center gap-2">
+
+              <span className="opacity-70">👀</span>
+
+              <span>Visitors</span>
+
+              <span className="bg-white/10 px-2 py-1 rounded-md text-blue-400 text-xs font-medium">
+                <img
+                  src="https://komarev.com/ghpvc/?username=yash-anpat&color=7c3aed&label=&style=flat"
+                  alt="views"
+                  className="inline"
+                />
+              </span>
+
+            </p>
+
           </div>
+
 
         </footer>
 
