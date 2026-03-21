@@ -56,18 +56,46 @@ export default function App() {
       <div className="fixed w-[500px] h-[500px] bg-purple-500 opacity-20 blur-3xl rounded-full bottom-[-200px] right-[-200px] animate-floatSlow"></div>
 
       {/* NAVBAR */}
-      <nav className="fixed top-0 left-0 w-full flex justify-between items-center px-10 py-6 text-gray-300 backdrop-blur-md bg-black/40 z-50">
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50">
 
-        <h1 className="text-lg font-semibold tracking-wide text-white">
-          Yash Anpat
-        </h1>
+        <div className="relative flex items-center justify-between px-10 py-4 rounded-full 
+  bg-white/3 backdrop-blur-2xl 
+  border border-white/10 
+  shadow-[0_8px_30px_rgba(0,0,0,0.3)]">
 
-        <div className="flex gap-8 text-sm">
-          <a href="#about" className="hover:text-blue-400 transition scroll-mt-24">About</a>
-          <a href="#skills" className="hover:text-blue-400 transition scroll-mt-24">Skills</a>
-          <a href="#projects" className="hover:text-blue-400 transition scroll-mt-24">Projects</a>
-          <a href="#future-projects" className="hover:text-blue-400 transition scroll-mt-24">AI Lab </a>
-          <a href="#contact" className="hover:text-blue-400 transition scroll-mt-24">Contact</a>
+          {/*  Glass reflection layer */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/5 via-transparent to-white/10 pointer-events-none"></div>
+
+          {/* Logo */}
+          <h1 className="text-base font-semibold tracking-wide text-white relative z-10">
+            Yash Anpat
+          </h1>
+
+          {/* Links */}
+          <div className="flex gap-8 text-sm text-gray-300 relative z-10">
+
+            <a href="#about" className="hover:text-blue-400 hover:scale-105 transition">
+              About
+            </a>
+
+            <a href="#skills" className="hover:text-blue-400 hover:scale-105 transition">
+              Skills
+            </a>
+
+            <a href="#projects" className="hover:text-blue-400 hover:scale-105 transition">
+              Projects
+            </a>
+
+            <a href="#future-projects" className="hover:text-blue-400 hover:scale-105 transition">
+              AI Lab
+            </a>
+
+            <a href="#contact" className="hover:text-blue-400 hover:scale-105 transition">
+              Contact
+            </a>
+
+          </div>
+
         </div>
 
       </nav>
@@ -481,7 +509,7 @@ export default function App() {
             </p>
 
             {/* 👇 VISITOR COUNTER */}
-            <p className="mt-4 text-gray-400 text-sm flex items-center justify-center gap-2">
+            {/* <p className="mt-4 text-gray-400 text-sm flex items-center justify-center gap-2">
 
               <span className="opacity-70">👀</span>
 
@@ -495,7 +523,7 @@ export default function App() {
                 />
               </span>
 
-            </p>
+            </p> */}
 
           </div>
 
