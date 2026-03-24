@@ -382,8 +382,8 @@ export default function App() {
 
           <div className="flex flex-col gap-4 text-gray-300">
 
-            <p>Email: <a href="mailto:yashnapat16@gmail.com" className="text-blue-400 ml-1 hover:underline">
-              yashnapat16@gmail.com
+            <p>Email: <a href="mailto:yashanpat16@gmail.com" className="text-blue-400 ml-1 hover:underline">
+              yashanpat16@gmail.com
             </a>
             </p>
 
