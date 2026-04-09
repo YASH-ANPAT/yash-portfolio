@@ -74,6 +74,10 @@ export default function App() {
           {/* Links */}
           <div className="flex gap-8 text-sm text-gray-300 relative z-10">
 
+            <a href="#hero" className="hover:text-blue-400 hover:scale-105 transition">
+              Home
+            </a>
+
             <a href="#about" className="hover:text-blue-400 hover:scale-105 transition">
               About
             </a>
@@ -105,7 +109,7 @@ export default function App() {
         {/* HERO SECTION */}
         <section data-aos="slide-down" id="hero" className="min-h-[calc(100vh-10px)] flex flex-col items-center justify-center text-center px-6 relative z-10">
           <h1 className="text-5xl md:text-7xl font-bold tracking-normal bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent pb-2">
-            Yash Anpat
+            Hello, I'm Yash Anpat
           </h1>
 
           <h2 className="mt-4 text-xl md:text-2xl text-gray-300">
