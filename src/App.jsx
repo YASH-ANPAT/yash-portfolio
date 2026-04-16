@@ -24,6 +24,12 @@ export default function App() {
 
   const projects = [
     {
+      title: "Food Delivery Time Prediction (ML Web App)",
+      desc: "A machine learning-based web application that predicts food delivery time using Multiple Regression, with real-world location input handled via OpenCage API and a user-friendly Flask interface.",
+      tech: "Python · Flask · Pandas · Scikit-learn · HTML · CSS · REST API",
+      link: "https://github.com/YASH-ANPAT/food-delivery-time-prediction"
+    },
+    {
       title: "NewsHub (News API Web App)",
       desc: "A Flask-based web application that fetches real-time news using NewsAPI, allowing users to search topics and view articles with a clean UI.",
       tech: "Python · Flask · HTML · CSS · REST API",
