@@ -24,8 +24,15 @@ export default function App() {
 
   const projects = [
     {
+      title: "Hunt the Wumpus (AI Game Web App)",
+      desc: "An interactive AI-based grid game inspired by the Wumpus World problem, where an agent navigates a partially observable environment using percepts like Breeze, Stench, and Glitter to locate gold while avoiding hazards. Built with a dynamic Flask backend and an enhanced responsive UI.",
+      tech: "Python · Flask · HTML · CSS · JavaScript · AI Concepts",
+      link: "https://github.com/YASH-ANPAT/wumpus-game-ai-agent-project",
+      demo: "https://wumpus-and-gold.onrender.com/"
+    },
+    {
       title: "Food Delivery Time Prediction (ML Web App)",
-      desc: "A machine learning-based web application that predicts food delivery time using Multiple Regression, with real-world location input handled via OpenCage API and a user-friendly Flask interface.",
+      desc: "A machine learning-based web application that predicts food delivery time using ultiple Regression, with real-world location input handled via OpenCage API and a user-friendly Flask interface.",
       tech: "Python · Flask · Pandas · Scikit-learn · HTML · CSS · REST API",
       link: "https://github.com/YASH-ANPAT/food-delivery-time-prediction"
     },
@@ -300,13 +307,27 @@ export default function App() {
                       {project.tech}
                     </p>
 
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-sm transition"
-                    >
-                      View Code
-                    </a>
+                    <div className="flex flex-wrap gap-3">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-sm transition"
+                      >
+                        View Code
+                      </a>
+
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="px-4 py-2 bg-purple-500 hover:bg-purple-600 rounded-lg text-sm transition"
+                        >
+                          Live Demo
+                        </a>
+                      )}
+                    </div>
 
                   </div>
 
