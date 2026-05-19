@@ -62,26 +62,31 @@ export default function App() {
     {
       accent: "from-blue-500/35 via-cyan-400/10 to-purple-500/35",
       label: "AI Game",
+      image: "",
       techItems: ["Python", "Flask", "HTML", "CSS", "JavaScript", "AI Concepts"],
     },
     {
       accent: "from-emerald-500/30 via-blue-400/10 to-sky-500/30",
       label: "ML App",
+      image: "",
       techItems: ["Python", "Flask", "Pandas", "Scikit-learn", "HTML", "CSS", "REST API"],
     },
     {
       accent: "from-purple-500/35 via-fuchsia-400/10 to-blue-500/30",
       label: "News API",
+      image: "",
       techItems: ["Python", "Flask", "HTML", "CSS", "REST API"],
     },
     {
       accent: "from-rose-500/30 via-purple-400/10 to-blue-500/30",
       label: "Django",
+      image: "",
       techItems: ["Python", "Django", "HTML", "CSS", "Database"],
     },
     {
       accent: "from-amber-500/25 via-blue-400/10 to-indigo-500/30",
       label: "Admin",
+      image: "",
       techItems: ["Python", "SQL", "HTML", "CSS"],
     },
   ];
