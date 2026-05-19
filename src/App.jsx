@@ -2,6 +2,7 @@ import { FaPython, FaGitAlt, FaHtml5 } from "react-icons/fa";
 import { SiCplusplus, SiDjango, SiTensorflow } from "react-icons/si";
 import { BsCodeSlash } from "react-icons/bs";
 import { AiOutlineApi } from "react-icons/ai";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 
 import AOS from "aos";
@@ -21,6 +22,7 @@ export default function App() {
 
 
   const [currentProject, setCurrentProject] = useState(0);
+  const [isProjectCarouselPaused, setIsProjectCarouselPaused] = useState(false);
 
   const projects = [
     {
@@ -56,7 +58,48 @@ export default function App() {
     },
   ];
 
+  const projectVisuals = [
+    {
+      accent: "from-blue-500/35 via-cyan-400/10 to-purple-500/35",
+      label: "AI Game",
+      techItems: ["Python", "Flask", "HTML", "CSS", "JavaScript", "AI Concepts"],
+    },
+    {
+      accent: "from-emerald-500/30 via-blue-400/10 to-sky-500/30",
+      label: "ML App",
+      techItems: ["Python", "Flask", "Pandas", "Scikit-learn", "HTML", "CSS", "REST API"],
+    },
+    {
+      accent: "from-purple-500/35 via-fuchsia-400/10 to-blue-500/30",
+      label: "News API",
+      techItems: ["Python", "Flask", "HTML", "CSS", "REST API"],
+    },
+    {
+      accent: "from-rose-500/30 via-purple-400/10 to-blue-500/30",
+      label: "Django",
+      techItems: ["Python", "Django", "HTML", "CSS", "Database"],
+    },
+    {
+      accent: "from-amber-500/25 via-blue-400/10 to-indigo-500/30",
+      label: "Admin",
+      techItems: ["Python", "SQL", "HTML", "CSS"],
+    },
+  ];
 
+  const projectCards = projects.map((project, index) => ({
+    ...project,
+    ...projectVisuals[index],
+  }));
+
+  useEffect(() => {
+    if (isProjectCarouselPaused) return;
+
+    const slideTimer = setInterval(() => {
+      setCurrentProject((project) => (project + 1) % projectCards.length);
+    }, 3850);
+
+    return () => clearInterval(slideTimer);
+  }, [isProjectCarouselPaused, projectCards.length]);
 
   return (
     <div className=" overflow-x-hidden bg-black text-white min-h-screen">
@@ -252,67 +295,124 @@ export default function App() {
         <section
           id="projects"
           data-aos="fade"
-          className="min-h-screen flex flex-col items-center justify-center text-center px-6 relative z-10"
+          className="min-h-screen flex flex-col items-center justify-center text-center px-4 md:px-6 relative z-10"
         >
 
-          <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent pb-1 ">
+          <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent pb-1">
             Projects
           </h2>
 
-          <div className="relative w-full max-w-6xl mx-auto py-20">
+          <div
+            className="relative w-full max-w-7xl mx-auto"
+            onMouseEnter={() => setIsProjectCarouselPaused(true)}
+            onMouseLeave={() => setIsProjectCarouselPaused(false)}
+            onFocus={() => setIsProjectCarouselPaused(true)}
+            onBlur={() => setIsProjectCarouselPaused(false)}
+          >
 
             {/* LEFT BUTTON */}
             <button
+              type="button"
+              aria-label="Previous project"
               onClick={() =>
                 setCurrentProject(
-                  (currentProject - 1 + projects.length) % projects.length
+                  (currentProject - 1 + projectCards.length) % projectCards.length
                 )
               }
-              className="absolute left-[-60px] top-1/2 -translate-y-1/2 z-10 text-4xl text-gray-400 hover:text-white"
+              className="hidden sm:flex absolute left-2 lg:left-8 top-[calc(50%-1rem)] -translate-y-1/2 z-20 h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-gray-100 shadow-[0_12px_34px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition duration-300 before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-br before:from-white/20 before:via-white/5 before:to-transparent before:opacity-80 hover:-translate-y-[calc(50%+2px)] hover:border-blue-400/70 hover:bg-blue-500/15 hover:text-white hover:shadow-[0_0_32px_rgba(59,130,246,0.45)]"
             >
-              ‹
+              <FiChevronLeft className="relative z-10 h-6 w-6" strokeWidth={2.6} />
             </button>
 
             {/* CARDS */}
-            <div className="w-full flex justify-center overflow-visible">
+            <div className="overflow-hidden py-6 [perspective:1400px]">
 
               {/* SLIDING TRACK */}
               <div
-                className="flex transition-all duration-700 ease-in-out"
+                className="flex gap-6 transition-transform duration-700 ease-out [transform-style:preserve-3d]"
                 style={{
-                  transform: `translateX(calc(50% - ${(currentProject * 340 + 150)}px))`
+                  "--project-card-width": "clamp(320px, 72vw, 980px)",
+                  "--project-card-gap": "1.5rem",
+                  transform: `translateX(calc(50% - (${currentProject} * (var(--project-card-width) + var(--project-card-gap))) - (var(--project-card-width) / 2)))`
                 }}
               >
 
-                {projects.map((project, index) => (
+                {projectCards.map((project, index) => {
+                  const offset = index - currentProject;
+                  const depth = Math.abs(offset);
+                  const rotate = offset === 0 ? 0 : offset < 0 ? 14 : -14;
+                  const translateZ = offset === 0 ? 0 : -140 * depth;
+                  const scale = offset === 0 ? 1 : 0.88 - depth * 0.04;
 
-                  <div
+                  return (
+
+                  <article
                     key={index}
-                    className={`w-[300px] mx-[20px] p-6 rounded-xl border backdrop-blur text-left transition-all duration-500
-        ${index === currentProject
-                        ? "scale-110 border-blue-400 bg-black/60 shadow-2xl shadow-blue-500/40 z-10"
-                        : "scale-90 opacity-40 border-gray-700 bg-black/30 blur-[1px]"
-                      }`}
+                    onClick={() => setCurrentProject(index)}
+                    className="w-[var(--project-card-width)] shrink-0 px-1 transition-all duration-700 ease-out [transform-style:preserve-3d]"
+                    style={{
+                      opacity: offset === 0 ? 1 : 0,
+                      pointerEvents: offset === 0 ? "auto" : "none",
+                      transform: `translateZ(${translateZ}px) rotateY(${rotate}deg) scale(${scale})`,
+                      zIndex: projectCards.length - depth,
+                    }}
                   >
 
-                    <h3 className="text-xl font-semibold mb-3">
+                    <div
+                      className={`group mx-auto grid max-w-5xl overflow-hidden rounded-2xl border border-white/10 bg-black/45 text-left backdrop-blur-2xl shadow-2xl shadow-black/40 transition duration-500 ease-out hover:-translate-y-2 hover:border-blue-400/60 hover:bg-black/55 hover:shadow-blue-500/25 md:min-h-[350px] md:grid-cols-[0.9fr_1.1fr]
+        ${index === currentProject
+                        ? "border-blue-400/70 shadow-blue-500/20"
+                        : "opacity-70"
+                      }`}
+                    >
+
+                      <div className={`relative min-h-[190px] overflow-hidden bg-gradient-to-br ${project.accent}`}>
+                        {project.image ? (
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="rounded-2xl border border-white/15 bg-white/10 px-6 py-4 text-sm font-semibold uppercase tracking-[0.28em] text-white/80 backdrop-blur-xl">
+                              {project.label}
+                            </div>
+                          </div>
+                        )}
+
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.24),transparent_34%),linear-gradient(135deg,rgba(0,0,0,0.08),rgba(0,0,0,0.62))]"></div>
+                        <div className="absolute bottom-4 left-4 rounded-full border border-white/15 bg-black/35 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur">
+                          Featured Project
+                        </div>
+                      </div>
+
+                      <div className="flex min-h-[330px] flex-col p-6 md:min-h-0 md:p-8">
+                    <h3 className="text-2xl font-semibold leading-snug text-white">
                       {project.title}
                     </h3>
 
-                    <p className="text-gray-400 mb-3">
+                    <p className="mt-4 text-base leading-relaxed text-gray-400 md:[display:-webkit-box] md:[-webkit-line-clamp:4] md:[-webkit-box-orient:vertical] md:overflow-hidden">
                       {project.desc}
                     </p>
 
-                    <p className="text-sm text-gray-500 mb-4">
-                      {project.tech}
-                    </p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {project.techItems.map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
 
-                    <div className="flex flex-wrap gap-3">
+                    <div className="mt-auto flex flex-wrap gap-3 pt-6">
                       <a
                         href={project.link}
                         target="_blank"
                         rel="noreferrer"
-                        className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-sm transition"
+                        className="rounded-lg bg-blue-500 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-blue-500/25 transition hover:bg-blue-600 hover:-translate-y-0.5"
                       >
                         View Code
                       </a>
@@ -322,16 +422,19 @@ export default function App() {
                           href={project.demo}
                           target="_blank"
                           rel="noreferrer"
-                          className="px-4 py-2 bg-purple-500 hover:bg-purple-600 rounded-lg text-sm transition"
+                          className="rounded-lg bg-purple-500 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-purple-500/25 transition hover:bg-purple-600 hover:-translate-y-0.5"
                         >
                           Live Demo
                         </a>
                       )}
                     </div>
 
-                  </div>
+                      </div>
+                    </div>
+                  </article>
 
-                ))}
+                  );
+                })}
 
               </div> {/* ✅ CLOSE sliding track */}
 
@@ -339,13 +442,54 @@ export default function App() {
 
             {/* RIGHT BUTTON */}
             <button
+              type="button"
+              aria-label="Next project"
               onClick={() =>
-                setCurrentProject((currentProject + 1) % projects.length)
+                setCurrentProject((currentProject + 1) % projectCards.length)
               }
-              className="absolute right-[-60px] top-1/2 -translate-y-1/2 z-10 text-4xl text-gray-400 hover:text-white"
+              className="hidden sm:flex absolute right-2 lg:right-8 top-[calc(50%-1rem)] -translate-y-1/2 z-20 h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-gray-100 shadow-[0_12px_34px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition duration-300 before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-br before:from-white/20 before:via-white/5 before:to-transparent before:opacity-80 hover:-translate-y-[calc(50%+2px)] hover:border-blue-400/70 hover:bg-blue-500/15 hover:text-white hover:shadow-[0_0_32px_rgba(59,130,246,0.45)]"
             >
-              ›
+              <FiChevronRight className="relative z-10 h-6 w-6" strokeWidth={2.6} />
             </button>
+
+            <div className="mt-8 flex items-center justify-center gap-3">
+              <button
+                type="button"
+                aria-label="Previous project"
+                onClick={() =>
+                  setCurrentProject(
+                    (currentProject - 1 + projectCards.length) % projectCards.length
+                  )
+                }
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-gray-100 shadow-lg shadow-black/25 backdrop-blur-xl transition hover:border-blue-400/70 hover:bg-blue-500/15 hover:text-white sm:hidden"
+              >
+                <FiChevronLeft className="h-5 w-5" strokeWidth={2.6} />
+              </button>
+
+              {projectCards.map((project, index) => (
+                <button
+                  key={project.title}
+                  type="button"
+                  aria-label={`Show ${project.title}`}
+                  onClick={() => setCurrentProject(index)}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${index === currentProject
+                    ? "w-8 bg-blue-400"
+                    : "w-2.5 bg-white/25 hover:bg-white/50"
+                    }`}
+                />
+              ))}
+
+              <button
+                type="button"
+                aria-label="Next project"
+                onClick={() =>
+                  setCurrentProject((currentProject + 1) % projectCards.length)
+                }
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-gray-100 shadow-lg shadow-black/25 backdrop-blur-xl transition hover:border-blue-400/70 hover:bg-blue-500/15 hover:text-white sm:hidden"
+              >
+                <FiChevronRight className="h-5 w-5" strokeWidth={2.6} />
+              </button>
+            </div>
 
           </div>
 
