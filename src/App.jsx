@@ -36,7 +36,8 @@ export default function App() {
       title: "Food Delivery Time Prediction (ML Web App)",
       desc: "A machine learning-based web application that predicts food delivery time using ultiple Regression, with real-world location input handled via OpenCage API and a user-friendly Flask interface.",
       tech: "Python · Flask · Pandas · Scikit-learn · HTML · CSS · REST API",
-      link: "https://github.com/YASH-ANPAT/food-delivery-time-prediction"
+      link: "https://github.com/YASH-ANPAT/food-delivery-time-prediction",
+      demo: "https://food-delivery-time-prediction-nal6.onrender.com/"
     },
     {
       title: "NewsHub (News API Web App)",
@@ -62,31 +63,31 @@ export default function App() {
     {
       accent: "from-blue-500/35 via-cyan-400/10 to-purple-500/35",
       label: "AI Game",
-      image: "",
+      image: "/project-images/wumpus-game.jpeg",
       techItems: ["Python", "Flask", "HTML", "CSS", "JavaScript", "AI Concepts"],
     },
     {
       accent: "from-emerald-500/30 via-blue-400/10 to-sky-500/30",
       label: "ML App",
-      image: "",
+      image: "/project-images/food-delivery.png",
       techItems: ["Python", "Flask", "Pandas", "Scikit-learn", "HTML", "CSS", "REST API"],
     },
     {
       accent: "from-purple-500/35 via-fuchsia-400/10 to-blue-500/30",
       label: "News API",
-      image: "",
+      image: "/project-images/newshub.jpeg",
       techItems: ["Python", "Flask", "HTML", "CSS", "REST API"],
     },
     {
       accent: "from-rose-500/30 via-purple-400/10 to-blue-500/30",
       label: "Django",
-      image: "",
+      image: "/project-images/medikeeps.jpeg",
       techItems: ["Python", "Django", "HTML", "CSS", "Database"],
     },
     {
       accent: "from-amber-500/25 via-blue-400/10 to-indigo-500/30",
       label: "Admin",
-      image: "",
+      image: "/project-images/school-management.png",
       techItems: ["Python", "SQL", "HTML", "CSS"],
     },
   ];
