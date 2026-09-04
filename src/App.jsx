@@ -158,11 +158,11 @@ export default function App() {
 
   const projects = [
     {
-      title: "Hunt the Wumpus (AI Web App)",
-      desc: "An interactive AI-based grid game inspired by the Wumpus World problem, where an agent navigates a partially observable environment using percepts like Breeze, Stench, and Glitter to locate gold while avoiding hazards. Built with a dynamic Flask backend and an enhanced responsive UI.",
-      tech: "Python · Flask · HTML · CSS · JavaScript · AI Concepts",
-      link: "https://github.com/YASH-ANPAT/wumpus-game-ai-agent-project",
-      demo: "https://wumpus-and-gold.onrender.com/"
+      title: "Predictive Equipment Maintenance Platform",
+      desc: "An end-to-end machine learning platform that monitors equipment telemetry, predicts failure probability using XGBoost, generates maintenance recommendations, and provides SHAP-based explanations through a React dashboard.",
+      tech: "Python · XGBoost · FastAPI · PostgreSQL · React · SHAP · Docker",
+      link: "https://github.com/YASH-ANPAT/predictive-maintenance-platform",
+      demo: "https://predictive-maintenance-platform-gamma.vercel.app/"
     },
     {
       title: "Delivery Time Prediction (ML Web App)",
@@ -193,10 +193,17 @@ export default function App() {
 
   const projectVisuals = [
     {
-      accent: "from-red-500/20 via-zinc-900/40 to-black",
-      label: "AI Game",
-      image: "/project-images/wumpus-game.jpeg",
-      techItems: ["Python", "Flask", "HTML", "CSS", "JavaScript", "AI Concepts"],
+      accent: "from-red-950/40 via-zinc-900/70 to-black",
+      label: "ML PLATFORM",
+      image: "/project-images/predictive-maintenance.png",
+      techItems: [
+        "Python",
+        "XGBoost",
+        "FastAPI",
+        "PostgreSQL",
+        "React",
+        "SHAP",
+      ],
     },
     {
       accent: "from-zinc-800/80 via-red-950/20 to-black",
@@ -244,13 +251,13 @@ export default function App() {
 
       {/* GLOBAL BACKGROUND */}
       {/* Deep Black Base */}
-<div className="fixed inset-0 bg-[linear-gradient(to_bottom,#030303_0%,#050505_50%,#030303_100%)]"></div>
+      <div className="fixed inset-0 bg-[linear-gradient(to_bottom,#030303_0%,#050505_50%,#030303_100%)]"></div>
 
-{/* Hero Grid */}
-<div className="fixed inset-0 bg-[linear-gradient(rgba(255,59,59,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,59,59,0.015)_1px,transparent_1px)] bg-[size:80px_80px] opacity-90"></div>
+      {/* Hero Grid */}
+      <div className="fixed inset-0 bg-[linear-gradient(rgba(255,59,59,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,59,59,0.015)_1px,transparent_1px)] bg-[size:80px_80px] opacity-90"></div>
 
-{/* Hero Right Accent */}
-<div className="fixed inset-y-0 right-0 w-1/3 bg-[linear-gradient(90deg,transparent_0%,rgba(255,59,59,0.02)_80%,transparent_100%)] pointer-events-none"></div>
+      {/* Hero Right Accent */}
+      <div className="fixed inset-y-0 right-0 w-1/3 bg-[linear-gradient(90deg,transparent_0%,rgba(255,59,59,0.02)_80%,transparent_100%)] pointer-events-none"></div>
       <div className="fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.009)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.007)_1px,transparent_1px)] bg-[size:112px_112px] opacity-50"></div>
 
       <div className="fixed h-[1000px] w-[1000px] rounded-full bg-[rgba(255,59,59,0.05)] opacity-15 blur-[180px] top-[-520px] left-[-520px] animate-float pointer-events-none"></div>
