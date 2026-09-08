@@ -783,8 +783,8 @@ export default function App() {
 
           <div className="flex flex-col gap-4 text-[var(--text-secondary)]">
 
-            <p>Email: <a href="mailto:yashanpat16@gmail.com" className="ml-1 text-[var(--accent-primary)] hover:underline">
-              yashanpat16@gmail.com
+            <p>Email: <a href="mailto:anpatyash16@gmail.com" className="ml-1 text-[var(--accent-primary)] hover:underline">
+              anpatyash16@gmail.com
             </a>
             </p>
 
@@ -799,6 +799,13 @@ export default function App() {
               LinkedIn:
               <a href="https://linkedin.com/in/yash-anpat" className="ml-1 text-[var(--accent-primary)] hover:underline">
                 linkedin.com/in/yash-anpat
+              </a>
+            </p>
+            
+            <p>
+              Wellfound:
+              <a href="https://linkedin.com/in/yash-anpat" className="ml-1 text-[var(--accent-primary)] hover:underline">
+                wellfound.com/u/yash-anpat
               </a>
             </p>
 
@@ -869,7 +876,7 @@ export default function App() {
 
                 <li>
                   <a
-                    href="mailto:yashanpat16@gmail.com"
+                    href="mailto:anpatyash16@gmail.com"
                     className="hover:text-white transition"
                   >
                     Email
@@ -893,6 +900,16 @@ export default function App() {
                     className="hover:text-white transition"
                   >
                     LinkedIn
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="https://wellfound.com/u/yash-anpat"
+                    target="_blank"
+                    className="hover:text-white transition"
+                  >
+                    Wellfound
                   </a>
                 </li>
 
