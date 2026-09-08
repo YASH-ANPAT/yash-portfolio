@@ -804,7 +804,7 @@ export default function App() {
             
             <p>
               Wellfound:
-              <a href="https://linkedin.com/in/yash-anpat" className="ml-1 text-[var(--accent-primary)] hover:underline">
+              <a href="https://wellfound.com/u/yash-anpat" className="ml-1 text-[var(--accent-primary)] hover:underline">
                 wellfound.com/u/yash-anpat
               </a>
             </p>
