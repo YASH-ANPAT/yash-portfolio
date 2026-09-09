@@ -158,14 +158,14 @@ export default function App() {
 
   const projects = [
     {
-      title: "Predictive Equipment Maintenance Platform",
-      desc: "An end-to-end machine learning platform that monitors equipment telemetry, predicts failure probability using XGBoost, generates maintenance recommendations, and provides SHAP-based explanations through a React dashboard.",
-      tech: "Python · XGBoost · FastAPI · PostgreSQL · React · SHAP · Docker",
-      link: "https://github.com/YASH-ANPAT/predictive-maintenance-platform",
-      demo: "https://predictive-maintenance-platform-gamma.vercel.app/"
+      title: "AI Document Assistant",
+      desc: "A Retrieval-Augmented Generation chatbot that lets users ask questions about PDF documents using semantic search, FAISS retrieval, and GPT-OSS 20B for grounded answers with source references.",
+      tech: "Python · RAG · Sentence Transformers · FAISS · GPT-OSS 20B · Groq · Streamlit",
+      link: "https://github.com/YASH-ANPAT/ai-document-assistant",
+      demo: "https://yash-rag-chatbot.streamlit.app/"
     },
     {
-      title: "Predictive Equipment Maintenance Platform",
+      title: "Predictive Maintenance Platform",
       desc: "An end-to-end machine learning platform that monitors equipment telemetry, predicts failure probability using XGBoost, generates maintenance recommendations, and provides SHAP-based explanations through a React dashboard.",
       tech: "Python · XGBoost · FastAPI · PostgreSQL · React · SHAP · Docker",
       link: "https://github.com/YASH-ANPAT/predictive-maintenance-platform",
