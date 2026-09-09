@@ -165,6 +165,13 @@ export default function App() {
       demo: "https://predictive-maintenance-platform-gamma.vercel.app/"
     },
     {
+      title: "Predictive Equipment Maintenance Platform",
+      desc: "An end-to-end machine learning platform that monitors equipment telemetry, predicts failure probability using XGBoost, generates maintenance recommendations, and provides SHAP-based explanations through a React dashboard.",
+      tech: "Python · XGBoost · FastAPI · PostgreSQL · React · SHAP · Docker",
+      link: "https://github.com/YASH-ANPAT/predictive-maintenance-platform",
+      demo: "https://predictive-maintenance-platform-gamma.vercel.app/"
+    },
+    {
       title: "Delivery Time Prediction (ML Web App)",
       desc: "A machine learning-based web application that predicts food delivery time using multiple r egression, with real-world location input handled via OpenCage API and a user-friendly Flask interface.",
       tech: "Python · Flask · Pandas · Scikit-learn · HTML · CSS · REST API",
@@ -192,6 +199,20 @@ export default function App() {
   ];
 
   const projectVisuals = [
+    {
+      accent: "from-red-950/30 via-zinc-900/70 to-black",
+      label: "RAG SYSTEM",
+      image: "/project-images/ai-document-assistant.png",
+      techItems: [
+        "Python",
+        "RAG",
+        "Sentence Transformers",
+        "FAISS",
+        "GPT-OSS 20B",
+        "Groq",
+        "Streamlit"
+      ],
+    },
     {
       accent: "from-red-950/40 via-zinc-900/70 to-black",
       label: "ML PLATFORM",
@@ -801,7 +822,7 @@ export default function App() {
                 linkedin.com/in/yash-anpat
               </a>
             </p>
-            
+
             <p>
               Wellfound:
               <a href="https://wellfound.com/u/yash-anpat" className="ml-1 text-[var(--accent-primary)] hover:underline">
