@@ -247,7 +247,7 @@ export default function App() {
     {
       accent: "from-zinc-700/50 via-black to-red-950/25",
       label: "Admin",
-      image: "/project-images/school-management.png",
+      image: null,
       techItems: ["Python", "SQL", "HTML", "CSS"],
     },
   ];
@@ -411,7 +411,7 @@ export default function App() {
                   PROFILE MODULE
                 </span>
 
-                {/* <p className="text-sm tracking-[0.25em] uppercase text-[var(--accent)] mb-4">
+                {/* <p className="text-sm tracking-[0.25em] uppercase text-[var(--accent-primary)] mb-4">
                   PROFILE MODULE
                 </p> */}
 
@@ -425,7 +425,7 @@ export default function App() {
                     Building Intelligent Systems
                   </p>
 
-                  <p className="text-4xl font-light leading-tight text-[var(--accent)] max-w-xl">
+                  <p className="text-4xl font-light leading-tight text-[var(--accent-primary)] max-w-xl">
                     For Real-World Impact
                   </p>
 
