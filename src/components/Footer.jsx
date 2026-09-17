@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer className="relative z-10 mt-32 border-t border-[var(--border-soft)] py-12">
@@ -19,27 +21,27 @@ export default function Footer() {
 
           <ul className="space-y-2 text-sm">
             <li>
-              <a href="#about" className="hover:text-white transition">
+              <Link to="/about" className="hover:text-white transition">
                 About
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a href="#skills" className="hover:text-white transition">
+              <Link to="/#skills" className="hover:text-white transition">
                 Skills
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a href="#projects" className="hover:text-white transition">
+              <Link to="/projects" className="hover:text-white transition">
                 Projects
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a href="#future-projects" className="hover:text-white transition">
+              <Link to="/ai-labs" className="hover:text-white transition">
                 AI Lab
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -57,19 +59,19 @@ export default function Footer() {
             </li>
 
             <li>
-              <a href="https://github.com/YASH-ANPAT" target="_blank" className="hover:text-white transition">
+              <a href="https://github.com/YASH-ANPAT" target="_blank" rel="noreferrer" className="hover:text-white transition">
                 GitHub
               </a>
             </li>
 
             <li>
-              <a href="https://linkedin.com/in/yash-anpat" target="_blank" className="hover:text-white transition">
+              <a href="https://linkedin.com/in/yash-anpat" target="_blank" rel="noreferrer" className="hover:text-white transition">
                 LinkedIn
               </a>
             </li>
 
             <li>
-              <a href="https://wellfound.com/u/yash-anpat" target="_blank" className="hover:text-white transition">
+              <a href="https://wellfound.com/u/yash-anpat" target="_blank" rel="noreferrer" className="hover:text-white transition">
                 Wellfound
               </a>
             </li>

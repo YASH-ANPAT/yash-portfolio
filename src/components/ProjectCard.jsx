@@ -1,25 +1,41 @@
-export default function ProjectCard({ project, index, currentProject, onSelect, totalProjects }) {
-  const offset = index - currentProject;
-  const depth = Math.abs(offset);
-  const rotate = offset === 0 ? 0 : offset < 0 ? 14 : -14;
-  const translateZ = offset === 0 ? 0 : -140 * depth;
-  const scale = offset === 0 ? 1 : 0.88 - depth * 0.04;
+export default function ProjectCard({
+  project,
+  index,
+  currentProject = 0,
+  onSelect = () => {},
+  totalProjects = 1,
+  isStandalone = false,
+}) {
+  const offset = isStandalone ? 0 : index - currentProject;
+  const depth = isStandalone ? 0 : Math.abs(offset);
+  const rotate = isStandalone ? 0 : offset === 0 ? 0 : offset < 0 ? 14 : -14;
+  const translateZ = isStandalone ? 0 : offset === 0 ? 0 : -140 * depth;
+  const scale = isStandalone ? 1 : offset === 0 ? 1 : 0.88 - depth * 0.04;
 
   return (
     <article
       key={index}
       onClick={() => onSelect(index)}
-      className="w-[var(--project-card-width)] shrink-0 px-1 transition-all duration-700 ease-out [transform-style:preserve-3d]"
-      style={{
-        opacity: offset === 0 ? 1 : 0,
-        pointerEvents: offset === 0 ? "auto" : "none",
-        transform: `translateZ(${translateZ}px) rotateY(${rotate}deg) scale(${scale})`,
-        zIndex: totalProjects - depth,
-      }}
+      className={isStandalone ? "w-full shrink-0 px-1 transition-all duration-700 ease-out [transform-style:preserve-3d]" : "w-[var(--project-card-width)] shrink-0 px-1 transition-all duration-700 ease-out [transform-style:preserve-3d]"}
+      style={
+        isStandalone
+          ? {
+              opacity: 1,
+              pointerEvents: "auto",
+              transform: "none",
+              zIndex: totalProjects - index,
+            }
+          : {
+              opacity: offset === 0 ? 1 : 0,
+              pointerEvents: offset === 0 ? "auto" : "none",
+              transform: `translateZ(${translateZ}px) rotateY(${rotate}deg) scale(${scale})`,
+              zIndex: totalProjects - depth,
+            }
+      }
     >
       <div
         className={`premium-glass premium-glass-hover group mx-auto grid h-[430px] max-h-[58vh] max-w-5xl overflow-hidden rounded-2xl text-left backdrop-blur-2xl transition duration-500 ease-out hover:-translate-y-2 md:h-[350px] md:grid-cols-[0.9fr_1.1fr]
-        ${index === currentProject ? "project-active" : "opacity-70"}`}
+        ${isStandalone || index === currentProject ? "project-active" : "opacity-70"}`}
       >
         <div className={`relative min-h-0 overflow-hidden bg-gradient-to-br ${project.accent}`}>
           {project.image ? (

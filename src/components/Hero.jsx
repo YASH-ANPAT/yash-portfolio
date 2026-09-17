@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ParticleWaveCore from "./ParticleWaveCore";
 
 export default function Hero() {
@@ -24,11 +25,9 @@ export default function Hero() {
           </p>
 
           <div className="mt-12 flex flex-wrap gap-4">
-            <a href="#projects">
-              <button className="crimson-button rounded-lg px-8 py-3 text-sm font-semibold transition duration-300 hover:-translate-y-1">
-                Explore Projects
-              </button>
-            </a>
+            <Link to="/projects" className="crimson-button rounded-lg px-8 py-3 text-sm font-semibold transition duration-300 hover:-translate-y-1">
+              Explore Projects
+            </Link>
 
             <a
               href="/Yash_Anpat_Resume.pdf"
