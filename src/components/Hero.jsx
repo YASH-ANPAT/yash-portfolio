@@ -1,41 +1,89 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import ParticleWaveCore from "./ParticleWaveCore";
 
 export default function Hero() {
   return (
-    <section data-aos="slide-down" id="hero" className="relative z-10 min-h-[120vh] overflow-hidden">
+    <section
+      id="hero"
+      className="relative z-10 min-h-screen overflow-hidden"
+      aria-labelledby="hero-title"
+    >
+      {/* =====================================================
+          INTERACTIVE PARTICLE FIELD
+
+          The particle core starts slightly before the text,
+          making it feel like the interface is coming online.
+          ===================================================== */}
       <ParticleWaveCore />
-      <div className="relative z-10 flex min-h-screen items-center px-6 pt-24 pb-16 md:px-12 lg:px-20">
-        <div className="max-w-3xl">
-          <span className="hero-label">
-            AI Engineer & Software Developer
-          </span>
 
-          <h1 className="cinematic-title">
-            <span className="cinematic-title-intro">Hello, I'm</span>
-            <span className="cinematic-title-main">Yash Anpat</span>
-          </h1>
+      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl items-center px-6 pb-20 pt-28 md:px-10 md:pt-32 lg:px-12">
+        <div className="w-full">
+          <div className="max-w-2xl">
+            {/* =================================================
+                HERO IDENTITY LABEL
+                ================================================= */}
+            <div className="hero-reveal hero-reveal-label mb-8">
+              <p className="hero-label mb-0">
+                AIML Engineer / Software Developer
+              </p>
+            </div>
 
-          <h2 className="mt-10 text-xl font-light text-[rgba(255,255,255,0.78)] md:text-2xl">
-            Building Intelligent Systems
-          </h2>
+            {/* =================================================
+                MAIN HERO HEADING
 
-          <p className="mt-8 max-w-lg text-lg leading-relaxed text-[var(--text-secondary)]">
-            I craft elegant solutions that think. Currently mastering AI & Machine Learning to engineer the next generation of intelligent systems.
-          </p>
+                Each line has its own reveal timing.
+                ================================================= */}
+            <h1 id="hero-title" className="hero-title">
+              <span className="hero-reveal hero-reveal-name hero-name">
+                Hey, I am Yash Anpat
+              </span>
 
-          <div className="mt-12 flex flex-wrap gap-4">
-            <Link to="/projects" className="crimson-button rounded-lg px-8 py-3 text-sm font-semibold transition duration-300 hover:-translate-y-1">
-              Explore Projects
-            </Link>
+              <span className="hero-reveal hero-reveal-headline hero-headline">
+                I build intelligent systems!
+              </span>
+            </h1>
 
-            <a
-              href="/Yash_Anpat_Resume.pdf"
-              download
-              className="ghost-button rounded-lg border px-8 py-3 text-sm font-semibold transition duration-300 hover:-translate-y-1"
-            >
-              Download Resume
-            </a>
+            {/* =================================================
+                SUPPORTING DESCRIPTION
+                ================================================= */}
+            <div className="hero-reveal hero-reveal-description">
+              <p className="mt-7 max-w-xl text-base leading-7 text-white/60 md:text-lg md:leading-8">
+                I design and build practical software at the intersection of
+                artificial intelligence, machine learning, and software
+                engineering.
+              </p>
+            </div>
+
+            {/* =================================================
+                PRIMARY ACTIONS
+                ================================================= */}
+            <div className="hero-reveal hero-reveal-actions mt-9 flex flex-wrap items-center gap-4">
+              <Link
+                to="/projects"
+                className="crimson-button rounded-lg px-7 py-3 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              >
+                Explore Projects
+              </Link>
+
+              <Link
+                to="/ai-labs"
+                className="ghost-button rounded-lg px-7 py-3 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              >
+                Explore AI Labs
+              </Link>
+            </div>
+
+            {/* =================================================
+                TECHNOLOGY SNAPSHOT
+
+                This is intentionally the final element to appear.
+                ================================================= */}
+            <div className="hero-reveal hero-reveal-stack mt-10 flex flex-wrap gap-x-5 gap-y-2 text-[10px] font-medium uppercase tracking-[0.16em] text-white/35">
+              <span>Python</span>
+              <span>Machine Learning</span>
+              <span>RAG</span>
+              <span>React</span>
+            </div>
           </div>
         </div>
       </div>

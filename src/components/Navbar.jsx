@@ -1,4 +1,5 @@
-import { Link, NavLink } from "react-router-dom";
+import { useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const navigationItems = [
   { to: "/", label: "Home" },
@@ -8,36 +9,122 @@ const navigationItems = [
 ];
 
 export default function Navbar() {
-  return (
-    <nav className="fixed top-4 left-1/2 z-50 w-[90%] max-w-6xl -translate-x-1/2 [perspective:1200px]">
-      <div className="group relative flex items-center justify-between overflow-hidden rounded-full bg-white/[0.045] px-10 py-4 shadow-[0_18px_44px_rgba(0,0,0,0.44),inset_0_1px_1px_rgba(255,255,255,0.11),inset_0_-10px_24px_rgba(0,0,0,0.18)] backdrop-blur-2xl transition duration-500 [transform-style:preserve-3d] hover:-translate-y-0.5 hover:bg-white/[0.055] hover:shadow-[0_22px_54px_rgba(0,0,0,0.5),0_0_30px_rgba(255,59,59,0.08),inset_0_1px_1px_rgba(255,255,255,0.13),inset_0_-10px_24px_rgba(0,0,0,0.2)]">
-        <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_72%_45%,rgba(255,255,255,0.06),transparent_28%)]"></div>
-        <div className="pointer-events-none absolute inset-[1px] rounded-full bg-[linear-gradient(110deg,rgba(255,255,255,0.055),rgba(255,255,255,0.02)_32%,rgba(255,255,255,0.01)_68%,rgba(255,255,255,0.055))]"></div>
-        <div className="pointer-events-none absolute left-7 top-0 h-[2px] w-[24%] rounded-full bg-gradient-to-r from-transparent via-white/42 to-transparent blur-[1px]"></div>
-        <div className="pointer-events-none absolute left-0 top-5 h-7 w-[2px] rounded-full bg-gradient-to-b from-transparent via-white/28 to-transparent blur-[1px]"></div>
-        <div className="pointer-events-none absolute left-3 top-2 h-8 w-24 rounded-full bg-white/[0.055] blur-xl"></div>
-        <div className="pointer-events-none absolute bottom-0 right-8 h-[2px] w-[26%] rounded-full bg-gradient-to-r from-transparent via-white/36 to-transparent blur-[1px]"></div>
-        <div className="pointer-events-none absolute bottom-5 right-0 h-7 w-[2px] rounded-full bg-gradient-to-b from-transparent via-white/24 to-transparent blur-[1px]"></div>
-        <div className="pointer-events-none absolute bottom-2 right-4 h-8 w-28 rounded-full bg-white/[0.045] blur-xl"></div>
-        <div className="pointer-events-none absolute inset-x-9 bottom-0 h-4 translate-y-1/2 rounded-full bg-black/24 blur-lg"></div>
-        <div className="pointer-events-none absolute inset-0 -z-10 translate-y-2 rounded-full bg-black/30 blur-lg"></div>
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
-        <Link to="/" className="group/logo relative z-10 cursor-pointer text-base font-semibold tracking-wide text-white drop-shadow-[0_1px_10px_rgba(255,255,255,0.12)]" aria-label="Go to Home">
-          <span className="absolute -inset-x-4 -inset-y-2 rounded-full bg-[radial-gradient(circle,rgba(255,59,59,0.42),transparent_58%)] opacity-0 blur-xl transition duration-500 group-hover/logo:opacity-80"></span>
-          <span className="relative bg-[linear-gradient(90deg,#ffffff,#ffffff)] bg-clip-text text-transparent transition duration-500 group-hover/logo:animate-pulse group-hover/logo:bg-[linear-gradient(90deg,#f5f5f5,#ff3b3b,#f5f5f5)] group-hover/logo:drop-shadow-[0_0_16px_rgba(255,59,59,0.55)]">
-            Yash Anpat
-          </span>
+  /*
+   * The boot animation is only used on the Home page.
+   * Other pages keep the normal navbar behavior.
+   */
+  const isHomePage = location.pathname === "/";
+
+  return (
+    <nav
+      className={`fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-black/70 backdrop-blur-md ${
+        isHomePage ? "home-navbar-boot" : ""
+      }`}
+      aria-label="Main navigation"
+    >
+      {/* Desktop header */}
+      <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-6 md:px-10 lg:px-12">
+        <Link
+          to="/"
+          onClick={() => setIsMenuOpen(false)}
+          className="text-sm font-semibold uppercase tracking-[0.22em] text-white transition-opacity duration-200 hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+          aria-label="Go to the home page"
+        >
+          YASH.ANPAT
         </Link>
 
-        <div className="relative z-10 flex gap-8 text-sm text-[var(--text-secondary)]">
+        {/* Desktop navigation links */}
+        <div className="hidden items-center gap-8 md:flex">
           {navigationItems.map(({ to, label }) => (
             <NavLink
               key={to}
               to={to}
               end={to === "/"}
               className={({ isActive }) =>
-                `rounded-full px-1 transition duration-300 hover:-translate-y-0.5 hover:scale-105 hover:text-[var(--text-primary)] hover:drop-shadow-[0_0_12px_rgba(255,59,59,0.36)] ${
-                  isActive ? "text-[var(--text-primary)]" : ""
+                `relative py-2 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/70 ${
+                  isActive
+                    ? "text-white"
+                    : "text-white/55 hover:text-white"
+                }`
+              }
+            >
+              {({ isActive }) => (
+                <>
+                  {label}
+
+                  {/* Active page indicator */}
+                  <span
+                    className={`absolute bottom-0 left-0 h-px bg-red-500 transition-all duration-200 ${
+                      isActive ? "w-full" : "w-0"
+                    }`}
+                    aria-hidden="true"
+                  />
+                </>
+              )}
+            </NavLink>
+          ))}
+        </div>
+
+        {/* Mobile menu button */}
+        <button
+          type="button"
+          className="flex h-10 w-10 items-center justify-center border border-white/10 text-white md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/70"
+          aria-label={
+            isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-navigation"
+          onClick={() => setIsMenuOpen((value) => !value)}
+        >
+          <span className="sr-only">
+            {isMenuOpen ? "Close menu" : "Open menu"}
+          </span>
+
+          {/* Hamburger / close icon */}
+          <span className="flex w-4 flex-col gap-1">
+            <span
+              className={`h-px w-full bg-white transition-transform duration-200 ${
+                isMenuOpen ? "translate-y-[3px] rotate-45" : ""
+              }`}
+            />
+
+            <span
+              className={`h-px w-full bg-white transition-opacity duration-200 ${
+                isMenuOpen ? "opacity-0" : ""
+              }`}
+            />
+
+            <span
+              className={`h-px w-full bg-white transition-transform duration-200 ${
+                isMenuOpen ? "-translate-y-[3px] -rotate-45" : ""
+              }`}
+            />
+          </span>
+        </button>
+      </div>
+
+      {/* Mobile navigation */}
+      <div
+        id="mobile-navigation"
+        className={`border-t border-white/[0.06] bg-black/95 md:hidden ${
+          isMenuOpen ? "block" : "hidden"
+        }`}
+      >
+        <div className="mx-auto flex max-w-7xl flex-col px-6 py-4">
+          {navigationItems.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={to === "/"}
+              onClick={() => setIsMenuOpen(false)}
+              className={({ isActive }) =>
+                `border-b border-white/[0.06] py-4 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-200 last:border-b-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/70 ${
+                  isActive
+                    ? "text-white"
+                    : "text-white/55 hover:text-white"
                 }`
               }
             >
