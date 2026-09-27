@@ -81,8 +81,11 @@ export default function Hero() {
             <div className="hero-reveal hero-reveal-stack mt-10 flex flex-wrap gap-x-5 gap-y-2 text-[10px] font-medium uppercase tracking-[0.16em] text-white/35">
               <span>Python</span>
               <span>Machine Learning</span>
+              <span>Artificial Intlligence</span>
               <span>RAG</span>
+              <span>LangChain</span>
               <span>React</span>
+              <span>Tailwind</span>
             </div>
           </div>
         </div>
