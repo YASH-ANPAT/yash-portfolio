@@ -6,101 +6,121 @@ export default function ProjectCard({
   totalProjects = 1,
   isStandalone = false,
 }) {
-  const offset = isStandalone ? 0 : index - currentProject;
-  const depth = isStandalone ? 0 : Math.abs(offset);
-  const rotate = isStandalone ? 0 : offset === 0 ? 0 : offset < 0 ? 14 : -14;
-  const translateZ = isStandalone ? 0 : offset === 0 ? 0 : -140 * depth;
-  const scale = isStandalone ? 1 : offset === 0 ? 1 : 0.88 - depth * 0.04;
+  const isActive = isStandalone || index === currentProject;
 
   return (
     <article
-      key={index}
       onClick={() => onSelect(index)}
-      className={isStandalone ? "w-full shrink-0 px-1 transition-all duration-700 ease-out [transform-style:preserve-3d]" : "w-[var(--project-card-width)] shrink-0 px-1 transition-all duration-700 ease-out [transform-style:preserve-3d]"}
-      style={
+      className={
         isStandalone
-          ? {
-              opacity: 1,
-              pointerEvents: "auto",
-              transform: "none",
-              zIndex: totalProjects - index,
-            }
-          : {
-              opacity: offset === 0 ? 1 : 0,
-              pointerEvents: offset === 0 ? "auto" : "none",
-              transform: `translateZ(${translateZ}px) rotateY(${rotate}deg) scale(${scale})`,
-              zIndex: totalProjects - depth,
-            }
+          ? "w-full shrink-0"
+          : "w-[var(--project-card-width)] shrink-0"
       }
+      style={{
+        opacity: isActive ? 1 : 0,
+        pointerEvents: isActive ? "auto" : "none",
+        zIndex: totalProjects - index,
+      }}
     >
-      <div
-        className={`premium-glass premium-glass-hover group mx-auto grid h-[430px] max-h-[58vh] max-w-5xl overflow-hidden rounded-2xl text-left backdrop-blur-2xl transition duration-500 ease-out hover:-translate-y-2 md:h-[350px] md:grid-cols-[0.9fr_1.1fr]
-        ${isStandalone || index === currentProject ? "project-active" : "opacity-70"}`}
-      >
-        <div className={`relative min-h-0 overflow-hidden bg-gradient-to-br ${project.accent}`}>
+      <div className="group mx-auto grid h-[375px] max-w-[3000px] overflow-hidden border border-[var(--color-border)] bg-black text-left md:grid-cols-[1.1fr_0.9fr]">
+
+        <div className="flex min-w-0 flex-col justify-between p-6 sm:p-7 md:p-8">
+
+          <div>
+            <div className="mb-8 flex items-center justify-between gap-4">
+              <span className="font-mono text-xs tracking-[0.18em] text-[var(--color-accent)]">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+
+              <span className="font-mono text-[0.65rem] tracking-[0.16em] text-[var(--color-text-secondary)]">
+                {project.label}
+              </span>
+            </div>
+
+            <h3 className="max-w-2xl font-[var(--font-heading)] text-xl font-medium leading-[0.98] tracking-[-0.04em] text-[var(--color-text)] sm:text-2xl lg:text-3xl">
+              {project.title}
+            </h3>
+
+            {project.description && (
+              <p className="mt-6 max-w-xl text-sm leading-7 text-[var(--color-text-secondary)] sm:text-base">
+                {project.description}
+              </p>
+            )}
+          </div>
+
+          <div className="mt-10">
+            <div className="flex max-w-2xl flex-wrap gap-x-5 gap-y-2 border-t border-[var(--color-border)] pt-4">
+              {project.technologies.map((technology) => (
+                <span
+                  key={technology}
+                  className="font-mono text-[0.68rem] tracking-[0.08em] text-[var(--color-accent)]"
+                >
+                  {technology}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-6">
+              {project.demoUrl && (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={(event) => event.stopPropagation()}
+                  className="font-mono text-xs tracking-[0.12em] text-[var(--color-text)] transition-colors hover:text-[var(--color-accent)]"
+                >
+                  LIVE ↗
+                </a>
+              )}
+
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={(event) => event.stopPropagation()}
+                  className="font-mono text-xs tracking-[0.12em] text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text)]"
+                >
+                  GITHUB ↗
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="relative min-h-0 overflow-hidden border-t border-[var(--color-border)] md:min-h-0 md:border-l md:border-t-0">
           {project.image ? (
             <img
               src={project.image}
-              alt={project.title}
-              className="h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-105 group-hover:brightness-75"
+              alt=""
+              className="h-full w-full object-cover grayscale transition-all duration-700 ease-out group-hover:scale-[1.025] group-hover:grayscale-0"
             />
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="rounded-2xl border border-white/15 bg-white/10 px-6 py-4 text-sm font-semibold uppercase tracking-[0.28em] text-white/80 backdrop-blur-xl">
+            <div className="flex h-full items-center justify-center bg-zinc-950">
+              <span className="font-mono text-xs tracking-[0.2em] text-[var(--color-text-secondary)]">
                 {project.label}
-              </div>
+              </span>
             </div>
           )}
 
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.10),transparent_32%),linear-gradient(135deg,rgba(0,0,0,0.26),rgba(0,0,0,0.80))]"></div>
-          <div className="absolute bottom-4 left-4 rounded-full border border-white/10 bg-black/45 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur">
-            Featured Project
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+
+          <div className="absolute bottom-5 right-5 font-mono text-[0.6rem] tracking-[0.16em] text-white/50">
+            SYSTEM {String(index + 1).padStart(2, "0")}
           </div>
         </div>
 
-        <div className="flex min-h-0 flex-col overflow-hidden p-6 md:p-8">
-          <h3 className="text-2xl font-semibold leading-snug text-white md:[display:-webkit-box] md:[-webkit-line-clamp:2] md:[-webkit-box-orient:vertical] md:overflow-hidden">
-            {project.title}
-          </h3>
-
-          <p className="mt-4 overflow-hidden text-base leading-relaxed text-[var(--text-secondary)] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:4]">
-            {project.desc}
-          </p>
-
-          <div className="mt-5 flex max-h-[74px] flex-wrap gap-2 overflow-hidden">
-            {project.techItems.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-1 text-xs text-[var(--text-secondary)]"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-auto flex flex-wrap gap-3 pt-6">
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noreferrer"
-              className="crimson-button rounded-lg px-5 py-2.5 text-sm font-medium text-white transition hover:-translate-y-0.5"
-            >
-              View Code
-            </a>
-
-            {project.demo && (
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-lg border border-white/10 bg-white/[0.045] px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-black/25 transition hover:-translate-y-0.5 hover:border-[var(--border-accent)] hover:bg-[var(--accent-faint)]"
-              >
-                Live Demo
-              </a>
-            )}
-          </div>
-        </div>
       </div>
     </article>
   );
 }
+
+
+
+
+
+
+
+
+
+

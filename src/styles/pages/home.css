@@ -73,20 +73,25 @@
 }
 
 .home-featured-section {
-  padding-top: clamp(5rem, 10vw, 8rem);
+  padding: clamp(3.5rem, 6vw, 5rem) 0 clamp(2.5rem, 5vw, 4rem);
 }
 
 .home-featured-heading {
-  width: min(760px, 100%);
-  margin: 0 auto 1rem;
-  padding-inline: clamp(1rem, 2vw, 2rem);
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.75fr) minmax(0, 1.25fr);
+  align-items: start;
+  gap: clamp(2rem, 6vw, 7rem);
+  width: 100%;
+  margin: 0 auto 1.25rem;
+  padding-inline: clamp(0rem, 1vw, 1rem);
 }
 
 .home-featured-heading p {
   max-width: 38rem;
-  margin-top: 0.55rem;
-  color: var(--color-text-secondary);
-  line-height: 1.8;
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.55;
 }
 
 .home-featured-heading a,
@@ -146,6 +151,19 @@
   .home-featured-section {
     width: 100%;
   }
+
+  .home-featured-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-bottom: 1rem;
+    padding-inline: 1.5rem;
+  }
+
+  .home-featured-heading p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 }
 
 .home-capability-section {
@@ -204,7 +222,7 @@
     grid-template-rows 1400ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* 01 � MACHINE LEARNING */
+/* 01 ï¿½ MACHINE LEARNING */
 .home-capability-active-0 {
   grid-template-columns: 0.96fr 1.04fr 0.98fr 0.98fr;
   grid-template-rows: 1.04fr 0.98fr 0.98fr;
@@ -441,3 +459,28 @@
   }
 }
 
+
+
+
+.home-featured-heading {
+  position: relative;
+}
+
+.home-featured-view-all {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 0 !important;
+}
+
+.home-featured-view-all {
+  font-size: 0.62rem !important;
+}
+
+.home-featured-view-all {
+  font-size: 0.42rem !important;
+}
+
+.home-featured-view-all {
+  font-size: 0.52rem !important;
+}
