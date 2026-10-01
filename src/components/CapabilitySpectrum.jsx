@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 
 const capabilities = [
   {
+    number: "08",
+    animationState: 7,
     title: "INTELLIGENCE",
     technologies: [
       "MACHINE LEARNING",
@@ -13,30 +15,52 @@ const capabilities = [
     ],
   },
   {
+    number: "07",
+    animationState: 6,
     title: "SOFTWARE",
     technologies: ["Python", "C++", "Django", "Flask", "FastAPI", "REST APIs"],
   },
   {
+    number: "06",
+    animationState: 5,
     title: "AI ENGINEERING",
     technologies: ["Streamlit", "Groq", "LLM Applications", "Agentic AI"],
   },
   {
-    title: "CLOUD / INFRASTRUCTURE",
+    number: "04",
+    animationState: 3,
+    title: "CLOUD / INFRA",
     technologies: ["AWS", "Google Cloud", "CI/CD", "Kubernetes"],
   },
   {
+    number: "05",
+    animationState: 4,
     title: "DATA",
     technologies: ["Data Processing", "Data Analysis", "Feature Engineering"],
   },
   {
+    number: "03",
+    animationState: 2,
     title: "DEVELOPER TOOLS",
     technologies: ["Git", "GitHub", "VS Code", "Docker"],
   },
   {
+    number: "01",
+    animationState: 0,
     title: "MACHINE LEARNING",
-    technologies: ["XGBoost", "Scikit-learn", "Pandas", "NumPy", "PyTorch", "ML Pipelines"],
+    technologies: [
+      "XGBoost",
+      "Scikit-learn",
+      "Pandas",
+      "NumPy",
+      "PyTorch",
+      "ML Pipelines",
+      "SHAPS",
+    ],
   },
   {
+    number: "02",
+    animationState: 1,
     title: "WEB / FRONTEND",
     technologies: ["React", "HTML", "CSS", "JavaScript", "Vite", "Tailwind"],
   },
@@ -50,12 +74,17 @@ export default function CapabilitySpectrum() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updateMotionPreference = () => setReducedMotion(mediaQuery.matches);
+
+    const updateMotionPreference = () => {
+      setReducedMotion(mediaQuery.matches);
+    };
 
     updateMotionPreference();
     mediaQuery.addEventListener("change", updateMotionPreference);
 
-    return () => mediaQuery.removeEventListener("change", updateMotionPreference);
+    return () => {
+      mediaQuery.removeEventListener("change", updateMotionPreference);
+    };
   }, []);
 
   useEffect(() => {
@@ -71,13 +100,17 @@ export default function CapabilitySpectrum() {
   }, []);
 
   useEffect(() => {
-    if (isPaused || reducedMotion) return undefined;
+    if (isPaused || reducedMotion) {
+      return undefined;
+    }
 
     const cycle = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % capabilities.length);
-    }, 4200);
+    }, 3000);
 
-    return () => window.clearInterval(cycle);
+    return () => {
+      window.clearInterval(cycle);
+    };
   }, [isPaused, reducedMotion]);
 
   const resumeCycle = () => {
@@ -90,20 +123,31 @@ export default function CapabilitySpectrum() {
     }, 900);
   };
 
+  const activeCapability = capabilities[activeIndex];
+
   return (
-    <section className="home-capability-section" aria-labelledby="capability-spectrum-title">
+    <section
+      className="home-capability-section"
+      aria-labelledby="capability-spectrum-title"
+    >
       <header className="home-capability-header">
-        <span className="home-capability-label" id="capability-spectrum-title">
+        <span
+          className="home-capability-label"
+          id="capability-spectrum-title"
+        >
           / CAPABILITY SPECTRUM
         </span>
-        <p>Tools and technologies I use to build intelligent software systems.</p>
+
+        <p>
+          Tools and technologies I use to build intelligent software systems.
+        </p>
       </header>
 
       <div
-        className={`home-capability-grid home-capability-active-${activeIndex}`}
-        onMouseLeave={() => resumeCycle()}
+        className={`home-capability-grid home-capability-active-${activeCapability.animationState}`}
+        onMouseLeave={resumeCycle}
         onFocus={() => setIsPaused(true)}
-        onBlur={() => resumeCycle()}
+        onBlur={resumeCycle}
       >
         {capabilities.map((capability, index) => (
           <article
@@ -115,25 +159,30 @@ export default function CapabilitySpectrum() {
             onMouseEnter={() => {
               setActiveIndex(index);
               setIsPaused(true);
+
               if (resumeTimeoutRef.current) {
                 window.clearTimeout(resumeTimeoutRef.current);
               }
             }}
-            onMouseLeave={() => resumeCycle()}
+            onMouseLeave={resumeCycle}
             onFocus={() => {
               setActiveIndex(index);
               setIsPaused(true);
+
               if (resumeTimeoutRef.current) {
                 window.clearTimeout(resumeTimeoutRef.current);
               }
             }}
-            onBlur={() => resumeCycle()}
-            aria-label={`${capability.title}: ${capability.technologies.join(", ")}`}
+            onBlur={resumeCycle}
+            aria-label={`${capability.title}: ${capability.technologies.join(
+              ", "
+            )}`}
           >
             <div className="home-capability-block-heading">
-              <span>0{index + 1}</span>
+              <span>{capability.number}</span>
               <h2>{capability.title}</h2>
             </div>
+
             <div className="home-capability-tech">
               {capability.technologies.map((technology) => (
                 <span key={technology}>{technology}</span>
