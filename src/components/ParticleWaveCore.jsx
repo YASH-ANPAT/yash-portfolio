@@ -579,6 +579,15 @@ export default function ParticleWaveCore() {
           0.01 *
           motionScale *
           formationProgress;
+        /*
+         * Vertical cursor influence.
+         */
+        y +=
+          (pointer.y -
+            width * 0.2) *
+          0.04 *
+          motionScale *
+          formationProgress;
 
         /*
          * -------------------------------------------

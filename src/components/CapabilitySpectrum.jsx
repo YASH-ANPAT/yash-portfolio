@@ -56,6 +56,7 @@ const capabilities = [
       "PyTorch",
       "ML Pipelines",
       "SHAPS",
+      "Seaborn",
     ],
   },
   {
@@ -139,7 +140,7 @@ export default function CapabilitySpectrum() {
         </span>
 
         <p>
-          Tools and technologies I use to build intelligent software systems.
+          Tools and tech I use to build intelligent software systems.
         </p>
       </header>
 

@@ -35,7 +35,7 @@ export default function Hero() {
                 ================================================= */}
             <h1 id="hero-title" className="hero-title">
               <span className="hero-reveal hero-reveal-name hero-name">
-                Hey, I am Yash Anpat
+                Yash  Anpat 
               </span>
 
               <span className="hero-reveal hero-reveal-headline hero-headline">
