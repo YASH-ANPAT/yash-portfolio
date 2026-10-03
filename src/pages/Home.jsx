@@ -32,10 +32,10 @@ export default function Home() {
         <div className="home-editorial-content">
           <h2>Where I experiment with intelligent systems.</h2>
           <p className="home-editorial-description">
-            A.U.R.A. Ãƒâ€šÃ‚Â· RAG Ãƒâ€šÃ‚Â· AGENTS Ãƒâ€šÃ‚Â· CODE ANALYSIS Ãƒâ€šÃ‚Â· EXPERIMENTS
+            A.U.R.A. · CODE ANALYSIS · EXPERIMENTS
           </p>
           <Link className="home-editorial-link" to="/ai-labs">
-            EXPLORE AI LABS ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢
+            EXPLORE AI LABS 
           </Link>
         </div>
       </section>
@@ -52,7 +52,7 @@ export default function Home() {
             out how the pieces should work together.
           </p>
           <Link className="home-editorial-link" to="/about">
-            READ ABOUT ME ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢
+            READ ABOUT ME
           </Link>
         </div>
       </section>
@@ -60,7 +60,7 @@ export default function Home() {
       <section className="home-editorial-section home-connect-section" id="contact">
         <div className="home-editorial-label">05 / LET&apos;S CONNECT</div>
         <div className="home-editorial-content">
-          <h2>Have an idea? Let&apos;s build something useful.</h2>
+          <h2>Have an idea?</h2><h2>Let&apos;s build something useful.</h2>
           <div className="home-contact-links">
             <a href="mailto:anpatyash16@gmail.com">Email</a>
             <a href="https://github.com/YASH-ANPAT">GitHub</a>
