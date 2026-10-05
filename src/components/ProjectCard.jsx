@@ -2,7 +2,7 @@ export default function ProjectCard({
   project,
   index,
   currentProject = 0,
-  onSelect = () => {},
+  onSelect = () => { },
   totalProjects = 1,
   isStandalone = false,
 }) {
@@ -93,7 +93,7 @@ export default function ProjectCard({
             <img
               src={project.image}
               alt=""
-              className="h-full w-full object-cover grayscale transition-all duration-700 ease-out group-hover:scale-[1.025] group-hover:grayscale-0"
+              className="h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.025]"
             />
           ) : (
             <div className="flex h-full items-center justify-center bg-zinc-950">

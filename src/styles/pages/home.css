@@ -205,10 +205,7 @@
     "developer-tools software intelligence intelligence";
 
   grid-template-columns:
-    minmax(0, 0.9fr)
-    minmax(0, 1.1fr)
-    minmax(0, 1fr)
-    minmax(0, 1fr);
+    minmax(0, 0.9fr) minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1fr);
 
   grid-template-rows: minmax(0, 0.88fr) minmax(0, 0.84fr) minmax(0, 1.28fr);
 
@@ -262,6 +259,7 @@
   grid-template-columns: 0.96fr 1.02fr 1.01fr 1.01fr;
   grid-template-rows: 0.98fr 1fr 1.02fr;
 }
+
 .home-capability-block {
   display: flex;
   min-width: 0;
@@ -284,10 +282,12 @@
 .home-capability-block:focus-visible,
 .home-capability-block-active {
   border-color: var(--color-border-strong);
-  color: var(--color-text);
+  background: rgba(18, 0, 0, 0.28);
 }
 
-.home-capability-block:not(.home-capability-block-active) { opacity: 1; }
+.home-capability-block:not(.home-capability-block-active) {
+  opacity: 1;
+}
 
 .home-capability-block:nth-child(1) {
   grid-area: intelligence;
@@ -328,7 +328,7 @@
   gap: 0.65rem;
 }
 
-.home-capability-block-heading > span {
+.home-capability-block-heading>span {
   color: var(--color-accent);
   font-family: var(--font-accent);
   font-size: 0.68rem;
@@ -452,6 +452,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .home-capability-grid,
   .home-capability-block,
   .home-capability-tech span {
