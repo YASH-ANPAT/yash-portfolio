@@ -121,7 +121,7 @@ export default function CapabilitySpectrum() {
 
     resumeTimeoutRef.current = window.setTimeout(() => {
       setIsPaused(false);
-    }, 900);
+    }, 90);
   };
 
   const activeCapability = capabilities[activeIndex];
