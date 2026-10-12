@@ -6,6 +6,7 @@ const navigationItems = [
   { to: "/projects", label: "Projects" },
   { to: "/ai-labs", label: "AI Labs" },
   { to: "/about", label: "About" },
+  { to: "/#contact", label: "Connect" },
 ];
 
 export default function Navbar() {

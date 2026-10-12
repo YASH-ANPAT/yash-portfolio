@@ -285,6 +285,14 @@
   box-shadow: 0 20px 64px rgba(0, 0, 0, 0.45);
 }
 
+.home-featured-section .group > div:first-child > div:last-child {
+  margin-top: 1.5rem;
+}
+
+.home-featured-section .group > div:first-child > div:last-child > div:first-child span {
+  font-size: 0.875rem;
+}
+
 /* =========================================================
    BUTTONS
    ========================================================= */
@@ -358,4 +366,3 @@
   border-color: rgba(255, 59, 59, 0.35);
   color: var(--color-text);
 }
-

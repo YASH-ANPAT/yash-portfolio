@@ -1,3 +1,5 @@
+import { FiExternalLink, FiGithub } from "react-icons/fi";
+
 export default function ProjectCard({
   project,
   index,
@@ -67,9 +69,10 @@ export default function ProjectCard({
                   target="_blank"
                   rel="noreferrer"
                   onClick={(event) => event.stopPropagation()}
-                  className="font-mono text-xs tracking-[0.12em] text-[var(--color-text)] transition-colors hover:text-[var(--color-accent)]"
+                  className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.12em] text-[var(--color-text)] transition-colors hover:text-[var(--color-accent)]"
                 >
-                  LIVE ↗
+                  <FiExternalLink aria-hidden="true" className="h-3.5 w-3.5" />
+                  LIVE
                 </a>
               )}
 
@@ -79,9 +82,10 @@ export default function ProjectCard({
                   target="_blank"
                   rel="noreferrer"
                   onClick={(event) => event.stopPropagation()}
-                  className="font-mono text-xs tracking-[0.12em] text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text)]"
+                  className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.12em] text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text)]"
                 >
-                  GITHUB ↗
+                  <FiGithub aria-hidden="true" className="h-3.5 w-3.5" />
+                  GITHUB
                 </a>
               )}
             </div>
@@ -114,8 +118,6 @@ export default function ProjectCard({
     </article>
   );
 }
-
-
 
 
 

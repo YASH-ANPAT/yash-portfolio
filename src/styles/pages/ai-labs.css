@@ -178,6 +178,8 @@
 
 .ai-labs-accent {
     color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-weight: 700;
 }
 
 .ai-labs-hero-description {
@@ -468,8 +470,11 @@
     letter-spacing: -0.05em;
 }
 
-.ai-labs-experiment-intro h2 span {
+.ai-labs-experiment-intro h2 span,
+.ai-labs-philosophy-content h2 span {
     color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-weight: 700;
 }
 
 .ai-labs-experiment-intro p {
@@ -572,10 +577,6 @@
     font-size: clamp(4.5rem, 8vw, 8rem);
     line-height: 0.86;
     letter-spacing: -0.06em;
-}
-
-.ai-labs-philosophy-content h2 span {
-    color: var(--color-accent);
 }
 
 .ai-labs-philosophy-copy {

@@ -39,7 +39,7 @@ export default function ProjectCarousel() {
                 featuredProjects.length
             )
           }
-          className="hidden sm:flex absolute left-0 lg:left-0 top-[calc(1.5rem+175px)] -translate-y-1/2 z-20 h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.035] text-[var(--text-primary)] shadow-[0_12px_30px_rgba(0,0,0,0.42)] backdrop-blur-2xl transition duration-300 before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-br before:from-white/10 before:via-white/[0.018] before:to-transparent before:opacity-75 hover:-translate-y-[calc(50%+2px)] hover:border-white/20 hover:bg-white/[0.055] hover:text-white hover:shadow-[0_14px_34px_rgba(0,0,0,0.48)]"
+          className="hidden sm:flex absolute left-0 lg:left-0 top-[calc(1.5rem+175px)] -translate-y-1/2 z-20 h-12 w-12 items-center justify-center rounded-none border border-white/10 bg-white/[0.035] text-[var(--text-primary)] shadow-[0_12px_30px_rgba(0,0,0,0.42)] backdrop-blur-2xl transition duration-300 before:absolute before:inset-0 before:rounded-none before:bg-gradient-to-br before:from-white/10 before:via-white/[0.018] before:to-transparent before:opacity-75 hover:-translate-y-[calc(50%+2px)] hover:border-white/20 hover:bg-white/[0.055] hover:text-white hover:shadow-[0_14px_34px_rgba(0,0,0,0.48)]"
         >
           <FiChevronLeft
             className="relative z-10 h-6 w-6"
@@ -77,7 +77,7 @@ export default function ProjectCarousel() {
               (currentProject + 1) % featuredProjects.length
             )
           }
-          className="hidden sm:flex absolute right-0 lg:right-0 top-[calc(1.5rem+175px)] -translate-y-1/2 z-20 h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.035] text-[var(--text-primary)] shadow-[0_12px_30px_rgba(0,0,0,0.42)] backdrop-blur-2xl transition duration-300 before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-br before:from-white/10 before:via-white/[0.018] before:to-transparent before:opacity-75 hover:-translate-y-[calc(50%+2px)] hover:border-white/20 hover:bg-white/[0.055] hover:text-white hover:shadow-[0_14px_34px_rgba(0,0,0,0.48)]"
+          className="hidden sm:flex absolute right-0 lg:right-0 top-[calc(1.5rem+175px)] -translate-y-1/2 z-20 h-12 w-12 items-center justify-center rounded-none border border-white/10 bg-white/[0.035] text-[var(--text-primary)] shadow-[0_12px_30px_rgba(0,0,0,0.42)] backdrop-blur-2xl transition duration-300 before:absolute before:inset-0 before:rounded-none before:bg-gradient-to-br before:from-white/10 before:via-white/[0.018] before:to-transparent before:opacity-75 hover:-translate-y-[calc(50%+2px)] hover:border-white/20 hover:bg-white/[0.055] hover:text-white hover:shadow-[0_14px_34px_rgba(0,0,0,0.48)]"
         >
           <FiChevronRight
             className="relative z-10 h-6 w-6"
@@ -95,7 +95,7 @@ export default function ProjectCarousel() {
                   featuredProjects.length
               )
             }
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.035] text-[var(--text-primary)] shadow-lg shadow-black/25 backdrop-blur-xl transition hover:border-white/20 hover:bg-white/[0.055] hover:text-white sm:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-none border border-white/10 bg-white/[0.035] text-[var(--text-primary)] shadow-lg shadow-black/25 backdrop-blur-xl transition hover:border-white/20 hover:bg-white/[0.055] hover:text-white sm:hidden"
           >
             <FiChevronLeft className="h-5 w-5" strokeWidth={2.6} />
           </button>
@@ -106,7 +106,7 @@ export default function ProjectCarousel() {
               type="button"
               aria-label={`Show ${project.title}`}
               onClick={() => setCurrentProject(index)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
+              className={`h-2.5 rounded-none transition-all duration-300 ${
                 index === currentProject
                   ? "w-8 bg-[var(--accent-primary)]"
                   : "w-2.5 bg-white/25 hover:bg-white/50"
@@ -122,7 +122,7 @@ export default function ProjectCarousel() {
                 (currentProject + 1) % featuredProjects.length
               )
             }
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.035] text-[var(--text-primary)] shadow-lg shadow-black/25 backdrop-blur-xl transition hover:border-white/20 hover:bg-white/[0.055] hover:text-white sm:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-none border border-white/10 bg-white/[0.035] text-[var(--text-primary)] shadow-lg shadow-black/25 backdrop-blur-xl transition hover:border-white/20 hover:bg-white/[0.055] hover:text-white sm:hidden"
           >
             <FiChevronRight className="h-5 w-5" strokeWidth={2.6} />
           </button>

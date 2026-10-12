@@ -22,12 +22,13 @@ export default function Home() {
             / FEATURED SYSTEMS
           </span>
 
-          <Link className="home-featured-view-all" to="/projects">
-            VIEW ALL PROJECTS →
-          </Link>
         </div>
 
         <ProjectCarousel />
+
+        <Link className="home-editorial-link" to="/ai-labs">
+          VIEW ALL PROJECTS →
+        </Link>
       </section>
 
       <section

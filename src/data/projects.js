@@ -44,7 +44,7 @@ export const projects = [
   {
     title: "Food Delivery Time Prediction",
     description:
-      "A machine learning-based web application that predicts food delivery time using multiple regression, with real-world location input handled via OpenCage API and a user-friendly Flask interface.",
+      "A machine learning web application that predicts food delivery times using multiple regression, with OpenCage API for real-world geolocation and a user-friendly Flask interface.",
     technologies: [
       "Python",
       "Flask",
