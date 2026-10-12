@@ -1,34 +1,9 @@
-const experiments = [
-  {
-    number: "02",
-    status: "PLANNED",
-    title: "AUTONOMOUS ML ENGINE",
-    category: "MACHINE LEARNING SYSTEMS",
-    description:
-      "An intelligent experimentation system that automates data profiling, feature engineering, model selection, training, evaluation, and optimization.",
-    flow: "PROFILE → ENGINEER → TRAIN → EVALUATE → OPTIMIZE",
-  },
-  {
-    number: "03",
-    status: "PLANNED",
-    title: "FRAUD INTELLIGENCE",
-    category: "REAL-TIME ML",
-    description:
-      "A machine learning system designed to detect suspicious transactions, identify anomalies, estimate risk, and explain why a transaction was flagged.",
-    flow: "TRANSACTION → RISK → DETECTION → EXPLANATION",
-  },
-  {
-    number: "04",
-    status: "PLANNED",
-    title: "MULTIMODAL INTELLIGENCE",
-    category: "MULTIMODAL AI",
-    description:
-      "An intelligence system for understanding documents, images, tables, and structured information through retrieval and multimodal reasoning.",
-    flow: "DOCUMENT → UNDERSTAND → RETRIEVE → REASON → RESPOND",
-  },
-];
+import { aiLabs } from "../data/aiLabs";
 
 export default function AILabs() {
+  const flagship = aiLabs[0];
+  const experiments = aiLabs.slice(1);
+
   return (
     <main className="ai-labs-page">
 
@@ -68,33 +43,17 @@ export default function AILabs() {
         <div className="ai-labs-system-index">
           <div className="ai-labs-system-index-header">
             <span>LAB INDEX</span>
-            <span>04 SYSTEMS</span>
+            <span>{String(aiLabs.length).padStart(2, "0")} SYSTEMS</span>
           </div>
 
           <div className="ai-labs-system-index-list">
-            <div>
-              <span>01</span>
-              <strong>A.U.R.A.</strong>
-              <em>BUILDING</em>
-            </div>
-
-            <div>
-              <span>02</span>
-              <strong>AUTONOMOUS ML ENGINE</strong>
-              <em>PLANNED</em>
-            </div>
-
-            <div>
-              <span>03</span>
-              <strong>FRAUD INTELLIGENCE</strong>
-              <em>PLANNED</em>
-            </div>
-
-            <div>
-              <span>04</span>
-              <strong>MULTIMODAL INTELLIGENCE</strong>
-              <em>PLANNED</em>
-            </div>
+            {aiLabs.map((project) => (
+              <div key={project.number}>
+                <span>{project.number}</span>
+                <strong>{project.title}</strong>
+                <em>{project.status}</em>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -118,7 +77,7 @@ export default function AILabs() {
             </h2>
 
             <p className="ai-labs-aura-name">
-              Automated Retrieval, Understanding &amp; Analysis
+              {flagship.fullTitle}
             </p>
 
             <p className="ai-labs-aura-description">
@@ -167,8 +126,8 @@ export default function AILabs() {
         </div>
 
         <div className="ai-labs-aura-footer">
-          <span>STATUS: BUILDING</span>
-          <span>01 / 04</span>
+          <span>STATUS: {flagship.status}</span>
+          <span>{flagship.number} / {String(aiLabs.length).padStart(2, "0")}</span>
         </div>
       </section>
 
@@ -178,7 +137,7 @@ export default function AILabs() {
 
       <section className="ai-labs-experiments">
         <div className="ai-labs-section-index">
-          <span>02—04</span>
+          <span>{experiments[0].number}—{experiments[experiments.length - 1].number}</span>
           <span>EXPERIMENTAL SYSTEMS</span>
         </div>
 
@@ -213,11 +172,13 @@ export default function AILabs() {
 
                 <h3>{experiment.title}</h3>
 
-                <p>{experiment.description}</p>
+                <p>{experiment.description || experiment.fullTitle}</p>
 
-                <div className="ai-labs-experiment-flow">
-                  {experiment.flow}
-                </div>
+                {experiment.flow && (
+                  <div className="ai-labs-experiment-flow">
+                    {experiment.flow}
+                  </div>
+                )}
               </div>
             </article>
           ))}
