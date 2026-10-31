@@ -1,5 +1,4 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
+import { aiLabs, profile, projects } from "./_knowledge/index.js";
 
 const UNKNOWN_ANSWER =
   "I don't have verified information about that yet. You can explore Yash's portfolio or contact him directly.";
@@ -7,25 +6,6 @@ const MAX_QUESTION_LENGTH = 600;
 const MAX_REQUESTS_PER_WINDOW = 20;
 const WINDOW_MS = 60 * 60 * 1000;
 const requestsByIp = new Map();
-
-const projectFiles = [
-  "ai-document-assistant.json",
-  "food-delivery-time-prediction.json",
-  "medikeeps.json",
-  "newshub.json",
-  "predictive-maintenance-platform.json",
-  "school-management-system.json",
-  "wumpus-game-ai.json",
-];
-
-function readKnowledge(path) {
-  const projectRoot = globalThis.process?.cwd?.() || ".";
-  return JSON.parse(readFileSync(join(projectRoot, "api", "_knowledge", path), "utf8"));
-}
-
-const profile = readKnowledge("profile.json");
-const aiLabs = readKnowledge("ai-labs.json");
-const projects = projectFiles.map((file) => readKnowledge(`projects/${file}`));
 
 function getClientIp(request) {
   return request.headers["x-forwarded-for"]?.split(",")[0]?.trim() || "unknown";
