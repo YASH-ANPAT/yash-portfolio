@@ -4,10 +4,5 @@
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
-  ],
-  "functions": {
-    "api/assistant.js": {
-      "includeFiles": ["api/_knowledge/**"]
-    }
-  }
+  ]
 }
