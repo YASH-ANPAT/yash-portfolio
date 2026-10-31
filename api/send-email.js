@@ -118,7 +118,24 @@ export default async function handler(request, response) {
   }
 
   if (!providerResponse.ok) {
-    console.error("Email provider rejected the message:", providerResponse.status);
+    const providerError = await providerResponse
+      .clone()
+      .json()
+      .catch(() => null);
+    const providerCode =
+      providerError?.name ||
+      providerError?.code ||
+      providerError?.error?.code ||
+      "unknown";
+    const providerMessage =
+      providerError?.message ||
+      providerError?.error?.message ||
+      "No provider message returned.";
+    console.error("Email provider rejected the message:", {
+      status: providerResponse.status,
+      code: String(providerCode).slice(0, 120),
+      message: String(providerMessage).replace(/[\r\n]/g, " ").slice(0, 240),
+    });
     return sendJson(response, 502, {
       message: "The email provider could not deliver this message.",
     });

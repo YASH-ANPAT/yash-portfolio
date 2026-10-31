@@ -61,7 +61,9 @@ body.yash-ai-open {
   position: fixed;
   inset: 0;
   z-index: 44;
-  background: rgba(0, 0, 0, 0.24);
+  background: rgba(0, 0, 0, 0.76);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .yash-ai-panel {
@@ -70,7 +72,9 @@ body.yash-ai-open {
   bottom: 6.25rem;
   display: flex;
   width: min(28rem, calc(100vw - 3rem));
-  max-height: min(42rem, calc(100dvh - 8rem));
+  height: min(42rem, calc(100dvh - 8rem));
+  max-height: calc(100dvh - 8rem);
+  min-height: 0;
   flex-direction: column;
   overflow: hidden;
   border: 1px solid var(--border-accent);
@@ -125,10 +129,12 @@ body.yash-ai-open {
 }
 
 .yash-ai-messages {
-  min-height: 12rem;
-  flex: 1 1 auto;
+  flex: 1 1 0%;
+  min-height: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 1rem 1.2rem;
+  scrollbar-gutter: stable;
 }
 
 .yash-ai-welcome-title {
@@ -184,6 +190,22 @@ body.yash-ai-open {
 .yash-ai-message-assistant {
   background: var(--surface);
   color: var(--text-secondary);
+}
+
+.yash-ai-retry {
+  margin-top: 0.7rem;
+  border: 1px solid var(--border-accent);
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0.4rem 0.55rem;
+  font-size: 0.7rem;
+}
+
+.yash-ai-retry:hover,
+.yash-ai-retry:focus-visible {
+  background: var(--accent-faint);
+  color: var(--text-primary);
 }
 
 .yash-ai-sources {
@@ -289,6 +311,7 @@ body.yash-ai-open {
     right: 0.75rem;
     bottom: calc(5.5rem + env(safe-area-inset-bottom));
     width: calc(100vw - 1.5rem);
+    height: calc(100dvh - 6.75rem - env(safe-area-inset-bottom));
     max-height: calc(100dvh - 6.75rem - env(safe-area-inset-bottom));
   }
 

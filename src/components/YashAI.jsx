@@ -9,7 +9,7 @@ const suggestedQuestions = [
   "What is he currently building?",
 ];
 
-function Message({ message }) {
+function Message({ message, onRetry }) {
   return (
     <article className={`yash-ai-message yash-ai-message-${message.role}`}>
       <p>{message.content}</p>
@@ -21,6 +21,15 @@ function Message({ message }) {
             </a>
           ))}
         </div>
+      )}
+      {message.retryQuestion && (
+        <button
+          type="button"
+          className="yash-ai-retry"
+          onClick={() => onRetry(message.retryQuestion)}
+        >
+          Try again
+        </button>
       )}
     </article>
   );
@@ -34,6 +43,19 @@ export default function YashAI() {
   const panelRef = useRef(null);
   const inputRef = useRef(null);
   const closeRef = useRef(null);
+  const messagesRef = useRef(null);
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const messagesContainer = messagesRef.current;
+    if (!messagesContainer) return;
+    const behavior = messages.length > 1 || status === "thinking" ? "smooth" : "auto";
+    messagesContainer.scrollTo({
+      top: messagesContainer.scrollHeight,
+      behavior,
+    });
+  }, [isOpen, messages, status]);
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -70,7 +92,13 @@ export default function YashAI() {
         body: JSON.stringify({ question: trimmed }),
       });
       const result = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(result.message || "YASH AI is unavailable.");
+      if (!response.ok) {
+        const error = new Error(
+          result.message || "YASH AI could not answer right now. Please try again."
+        );
+        error.isServerMessage = Boolean(result.message);
+        throw error;
+      }
       setMessages((current) => [
         ...current,
         { role: "assistant", content: result.answer, sources: result.sources },
@@ -82,7 +110,10 @@ export default function YashAI() {
         ...current,
         {
           role: "assistant",
-          content: "YASH AI is unavailable right now. Please try again later or contact Yash directly.",
+          content: error.isServerMessage
+            ? error.message
+            : "YASH AI could not be reached. Please check your connection and try again.",
+          retryQuestion: trimmed,
         },
       ]);
       setStatus("error");
@@ -141,7 +172,7 @@ export default function YashAI() {
               </button>
             </header>
 
-            <div className="yash-ai-messages" aria-live="polite">
+            <div ref={messagesRef} className="yash-ai-messages" aria-live="polite">
               {messages.length === 0 ? (
                 <div className="yash-ai-welcome">
                   <p className="yash-ai-welcome-title">What would you like to know?</p>
@@ -154,7 +185,13 @@ export default function YashAI() {
                   </div>
                 </div>
               ) : (
-                messages.map((message, index) => <Message key={`${message.role}-${index}`} message={message} />)
+                messages.map((message, index) => (
+                  <Message
+                    key={`${message.role}-${index}`}
+                    message={message}
+                    onRetry={askQuestion}
+                  />
+                ))
               )}
               {status === "thinking" && (
                 <div className="yash-ai-thinking" role="status">
@@ -164,6 +201,7 @@ export default function YashAI() {
               {status === "error" && question.length > 600 && (
                 <p className="yash-ai-error" role="alert">Please keep your question under 600 characters.</p>
               )}
+              <div ref={messagesEndRef} aria-hidden="true" />
             </div>
 
             <form className="yash-ai-input-row" onSubmit={handleSubmit}>
