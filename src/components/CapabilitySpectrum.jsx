@@ -128,6 +128,7 @@ export default function CapabilitySpectrum() {
 
   return (
     <section
+      id="skills"
       className="home-capability-section"
       aria-labelledby="capability-spectrum-title"
     >

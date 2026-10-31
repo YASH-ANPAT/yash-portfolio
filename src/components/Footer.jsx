@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 mt-32 border-t border-[var(--border-soft)] py-12">
+    <footer className="site-footer relative z-10 mt-32 border-t border-[var(--border-soft)] py-12">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 text-[var(--text-secondary)] md:grid-cols-3">
         <div>
           <h3 className="text-white text-lg font-semibold mb-4">

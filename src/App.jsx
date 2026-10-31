@@ -34,7 +34,7 @@ function NotFoundPage() {
       <div className="text-center">
         <h1 className="text-4xl font-bold text-white">Page not found</h1>
         <p className="mt-4 text-[var(--text-secondary)]">The page you are looking for does not exist.</p>
-        <Link to="/" className="mt-6 inline-block rounded-lg border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-medium text-white transition hover:border-[var(--border-accent)] hover:bg-[var(--accent-faint)]">
+        <Link to="/" className="mt-6 inline-block rounded-none border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-medium text-white transition hover:border-[var(--border-accent)] hover:bg-[var(--accent-faint)]">
           Back Home
         </Link>
       </div>

@@ -3,6 +3,24 @@ import { aiLabs } from "../data/aiLabs";
 export default function AILabs() {
   const flagship = aiLabs[0];
   const experiments = aiLabs.slice(1);
+  const experimentRange = experiments.length
+    ? `${experiments[0].number}—${experiments[experiments.length - 1].number}`
+    : null;
+
+  if (!flagship) {
+    return (
+      <main className="ai-labs-page">
+        <section className="ai-labs-empty-state" aria-live="polite">
+          <p className="ai-labs-kicker">/ EXPERIMENTATION &amp; RESEARCH</p>
+          <h1>AI Labs data unavailable</h1>
+          <p>
+            The lab systems could not be loaded. Please check the data source
+            before trying again.
+          </p>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="ai-labs-page">
@@ -136,53 +154,57 @@ export default function AILabs() {
           ===================================================== */}
 
       <section className="ai-labs-experiments">
-        <div className="ai-labs-section-index">
-          <span>{experiments[0].number}—{experiments[experiments.length - 1].number}</span>
-          <span>EXPERIMENTAL SYSTEMS</span>
-        </div>
+        {experiments.length > 0 && (
+          <>
+            <div className="ai-labs-section-index">
+              <span>{experimentRange}</span>
+              <span>EXPERIMENTAL SYSTEMS</span>
+            </div>
 
-        <div className="ai-labs-experiment-intro">
-          <h2>
-            Beyond the
-            <br />
-            <span>model.</span>
-          </h2>
+            <div className="ai-labs-experiment-intro">
+              <h2>
+                Beyond the
+                <br />
+                <span>model.</span>
+              </h2>
 
-          <p>
-            The lab is where I explore what happens when machine learning
-            becomes part of a larger engineered system.
-          </p>
-        </div>
+              <p>
+                The lab is where I explore what happens when machine learning
+                becomes part of a larger engineered system.
+              </p>
+            </div>
 
-        <div className="ai-labs-experiment-list">
-          {experiments.map((experiment) => (
-            <article
-              className="ai-labs-experiment"
-              key={experiment.number}
-            >
-              <div className="ai-labs-experiment-number">
-                {experiment.number}
-              </div>
-
-              <div className="ai-labs-experiment-main">
-                <div className="ai-labs-experiment-heading">
-                  <span>{experiment.category}</span>
-                  <span>{experiment.status}</span>
-                </div>
-
-                <h3>{experiment.title}</h3>
-
-                <p>{experiment.description || experiment.fullTitle}</p>
-
-                {experiment.flow && (
-                  <div className="ai-labs-experiment-flow">
-                    {experiment.flow}
+            <div className="ai-labs-experiment-list">
+              {experiments.map((experiment) => (
+                <article
+                  className="ai-labs-experiment"
+                  key={experiment.number}
+                >
+                  <div className="ai-labs-experiment-number">
+                    {experiment.number}
                   </div>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
+
+                  <div className="ai-labs-experiment-main">
+                    <div className="ai-labs-experiment-heading">
+                      <span>{experiment.category}</span>
+                      <span>{experiment.status}</span>
+                    </div>
+
+                    <h3>{experiment.title}</h3>
+
+                    <p>{experiment.description || experiment.fullTitle}</p>
+
+                    {experiment.flow && (
+                      <div className="ai-labs-experiment-flow">
+                        {experiment.flow}
+                      </div>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </>
+        )}
       </section>
 
       {/* =====================================================
@@ -191,7 +213,7 @@ export default function AILabs() {
 
       <section className="ai-labs-philosophy">
         <div className="ai-labs-section-index">
-          <span>LABgit status</span>
+          <span>02</span>
           <span>EXPERIMENTAL METHOD</span>
         </div>
 

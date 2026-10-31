@@ -24,7 +24,7 @@ export default function ProjectCard({
         zIndex: totalProjects - index,
       }}
     >
-      <div className="group mx-auto grid h-[375px] max-w-[3000px] overflow-hidden border border-[var(--color-border)] bg-black text-left md:grid-cols-[1.1fr_0.9fr]">
+      <div className="project-card group mx-auto grid h-[375px] max-w-[3000px] overflow-hidden border border-[var(--color-border)] bg-black text-left md:grid-cols-[1.1fr_0.9fr]">
 
         <div className="flex min-w-0 flex-col justify-between p-6 sm:p-7 md:p-8">
 
@@ -55,7 +55,7 @@ export default function ProjectCard({
               {project.technologies.map((technology) => (
                 <span
                   key={technology}
-                  className="font-mono text-[0.68rem] tracking-[0.08em] text-[var(--color-accent)]"
+                  className="project-card-tech font-mono text-[0.68rem] tracking-[0.08em] text-[var(--color-accent)]"
                 >
                   {technology}
                 </span>
@@ -69,7 +69,7 @@ export default function ProjectCard({
                   target="_blank"
                   rel="noreferrer"
                   onClick={(event) => event.stopPropagation()}
-                  className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.12em] text-[var(--color-text)] transition-colors hover:text-[var(--color-accent)]"
+                  className="project-card-action inline-flex items-center gap-2 font-mono text-xs tracking-[0.12em] text-[var(--color-text)] transition-colors hover:text-[var(--color-accent)]"
                 >
                   <FiExternalLink aria-hidden="true" className="h-3.5 w-3.5" />
                   LIVE
@@ -82,7 +82,7 @@ export default function ProjectCard({
                   target="_blank"
                   rel="noreferrer"
                   onClick={(event) => event.stopPropagation()}
-                  className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.12em] text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text)]"
+                  className="project-card-action inline-flex items-center gap-2 font-mono text-xs tracking-[0.12em] text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text)]"
                 >
                   <FiGithub aria-hidden="true" className="h-3.5 w-3.5" />
                   GITHUB
@@ -118,7 +118,6 @@ export default function ProjectCard({
     </article>
   );
 }
-
 
 
 

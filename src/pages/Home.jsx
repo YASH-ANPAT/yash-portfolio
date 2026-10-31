@@ -1,6 +1,7 @@
 import Hero from "../components/Hero";
 import CapabilitySpectrum from "../components/CapabilitySpectrum";
 import ProjectCarousel from "../components/ProjectCarousel";
+import Contact from "../components/Contact";
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -26,7 +27,7 @@ export default function Home() {
 
         <ProjectCarousel />
 
-        <Link className="home-editorial-link" to="/ai-labs">
+        <Link className="home-editorial-link" to="/projects">
           VIEW ALL PROJECTS →
         </Link>
       </section>
@@ -87,58 +88,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        className="home-editorial-section home-connect-section"
-        id="contact"
-      >
-        <div className="home-editorial-label">
-          / LET&apos;S CONNECT
-        </div>
-
-        <div className="home-editorial-content">
-          <h2>Have an idea?</h2>
-          <h2>
-            Let&apos;s{" "}
-            <span
-              className="text-[var(--color-accent)]"
-              style={{
-                font: "inherit",
-                letterSpacing: "inherit",
-                lineHeight: "inherit",
-                fontWeight: "inherit",
-              }}
-            >
-              build
-            </span>{" "}
-            something useful.
-          </h2>
-
-          <div className="home-contact-links">
-            <a href="mailto:anpatyash16@gmail.com">Email</a>
-            <a
-              href="https://github.com/YASH-ANPAT"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/yash-anpat"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://wellfound.com/u/yash-anpat"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Wellfound
-            </a>
-          </div>
-        </div>
-      </section>
+      <Contact />
     </main>
   );
 }

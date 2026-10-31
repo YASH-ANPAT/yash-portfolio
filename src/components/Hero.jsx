@@ -56,6 +56,13 @@ export default function Hero() {
               </a>
 
               <a
+                href="#contact"
+                className="ghost-button flat-lg px-7 py-3 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              >
+                Let&apos;s Talk
+              </a>
+
+              <a
                 href="/Yash_Anpat_Resume.pdf"
                 download
                 className="ghost-button flat-lg px-7 py-3 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"

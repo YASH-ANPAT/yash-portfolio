@@ -6,7 +6,7 @@ const navigationItems = [
   { to: "/projects", label: "Projects" },
   { to: "/ai-labs", label: "AI Labs" },
   { to: "/about", label: "About" },
-  { to: "/#contact", label: "Connect" },
+  { to: "/#contact", label: "Let's Talk" },
 ];
 
 export default function Navbar() {
@@ -21,7 +21,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-black/70 backdrop-blur-md ${
+      className={`site-navbar fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-black/70 backdrop-blur-md ${
         isHomePage ? "home-navbar-boot" : ""
       }`}
       aria-label="Main navigation"
@@ -31,7 +31,7 @@ export default function Navbar() {
         <Link
           to="/"
           onClick={() => setIsMenuOpen(false)}
-          className="text-sm font-semibold uppercase tracking-[0.22em] text-white transition-opacity duration-200 hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+          className="site-navbar-logo text-sm font-semibold uppercase tracking-[0.22em] text-white transition-opacity duration-200 hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
           aria-label="Go to the home page"
         >
           YASH.ANPAT
@@ -45,7 +45,7 @@ export default function Navbar() {
               to={to}
               end={to === "/"}
               className={({ isActive }) =>
-                `relative py-2 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/70 ${
+                `site-navbar-link relative py-2 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/70 ${
                   isActive
                     ? "text-white"
                     : "text-white/55 hover:text-white"
@@ -110,7 +110,7 @@ export default function Navbar() {
       {/* Mobile navigation */}
       <div
         id="mobile-navigation"
-        className={`border-t border-white/[0.06] bg-black/95 md:hidden ${
+        className={`site-mobile-navigation border-t border-white/[0.06] bg-black/95 md:hidden ${
           isMenuOpen ? "block" : "hidden"
         }`}
       >
@@ -122,7 +122,7 @@ export default function Navbar() {
               end={to === "/"}
               onClick={() => setIsMenuOpen(false)}
               className={({ isActive }) =>
-                `border-b border-white/[0.06] py-4 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-200 last:border-b-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/70 ${
+                `site-mobile-navigation-link border-b border-white/[0.06] py-4 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-200 last:border-b-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500/70 ${
                   isActive
                     ? "text-white"
                     : "text-white/55 hover:text-white"

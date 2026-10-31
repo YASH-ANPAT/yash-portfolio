@@ -8,6 +8,9 @@
     overflow: hidden;
     background: var(--color-bg);
     color: var(--color-text);
+    background:
+        radial-gradient(circle at 76% 10%, rgba(255, 59, 59, 0.06), transparent 28rem),
+        var(--color-bg);
 }
 
 
@@ -294,6 +297,107 @@
     color: var(--color-text);
     border-color: var(--color-border-strong);
     background: rgba(255, 59, 59, 0.045);
+}
+
+/* Phase 2 visual refinement */
+.ai-labs-system-index,
+.ai-labs-aura,
+.ai-labs-experiments,
+.ai-labs-philosophy {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.ai-labs-aura-main {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ai-labs-aura-tags span {
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.018);
+}
+
+.ai-labs-status-dot {
+    animation: aiLabsStatusPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes aiLabsStatusPulse {
+    0%, 100% { opacity: 0.65; }
+    50% { opacity: 1; }
+}
+
+@media (max-width: 1023px) {
+    .ai-labs-hero-content,
+    .ai-labs-aura-main {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-labs-system-status {
+        justify-self: start;
+    }
+
+    .ai-labs-aura-main {
+        min-height: 0;
+        padding-block: 4rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .ai-labs-hero,
+    .ai-labs-aura {
+        padding-inline: 1.5rem;
+    }
+
+    .ai-labs-hero {
+        padding-top: 2rem;
+    }
+
+    .ai-labs-hero-meta,
+    .ai-labs-aura-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .ai-labs-aura-footer span:last-child {
+        margin-left: 0;
+    }
+
+    .ai-labs-system-index-list {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-labs-system-index-list > div:nth-child(odd),
+    .ai-labs-system-index-list > div:nth-child(even) {
+        padding-inline: 0;
+        border-right: 0;
+    }
+
+    .ai-labs-system-index-list > div:nth-last-child(-n + 2) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+    }
+
+    .ai-labs-system-index-list > div:last-child {
+        border-bottom: 0;
+    }
+
+    .ai-labs-hero-content {
+        margin-top: 3.5rem;
+    }
+
+    .ai-labs-hero-copy h1 {
+        font-size: clamp(3.2rem, 17vw, 5.2rem);
+    }
+
+    .ai-labs-aura-copy h2 {
+        font-size: clamp(4.5rem, 24vw, 8rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-labs-status-dot {
+        animation: none;
+    }
 }
 
 

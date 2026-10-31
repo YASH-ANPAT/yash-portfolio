@@ -254,6 +254,46 @@
   }
 }
 
+/* Phase 2 visual refinement */
+.about-profile-page,
+.about-editorial-page {
+  background: radial-gradient(circle at 82% 4%, rgba(255, 59, 59, 0.055), transparent 28rem);
+}
+
+.about-profile-intro,
+.about-editorial-intro {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-profile-name,
+.about-editorial-name {
+  text-wrap: balance;
+}
+
+.about-profile-lead,
+.about-editorial-lead {
+  color: var(--color-text-secondary);
+}
+
+.about-profile-section,
+.about-editorial-section {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.about-profile-facts div,
+.about-editorial-facts div {
+  background: rgba(255, 255, 255, 0.018);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+}
+
+@media (max-width: 1023px) {
+  .about-profile-intro {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
 
 .about-profile-page {
   animation: aboutProfileReveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both;

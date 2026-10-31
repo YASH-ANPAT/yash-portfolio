@@ -1,20 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { projectCards } from "../data/projects";
 
-const projectOrder = [
-  "Predictive Equipment Maintenance Platform",
-  "AI Document Assistant",
-  "Food Delivery Time Prediction",
-  "NewsHub",
-  "MediKeeps - Hospital Management System",
-  "Wumpus Game AI",
-  "School Management System",
-];
-
-const orderedProjects = projectOrder
-  .map((title) => projectCards.find((project) => project.title === title))
-  .filter(Boolean);
-
 function ProjectVisual({ project, number }) {
   return (
     <div className="projects-showcase-visual">
@@ -125,7 +111,7 @@ export default function Projects() {
         </header>
 
         <div className="projects-showcase-list">
-          {orderedProjects.map((project, index) => {
+          {projectCards.map((project, index) => {
             const number = String(index + 1).padStart(2, "0");
             const isReversed = index % 2 === 1;
 
