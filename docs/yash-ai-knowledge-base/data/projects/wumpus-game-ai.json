@@ -1,0 +1,26 @@
+{
+  "id": "wumpus-game-ai",
+  "title": "Wumpus Game AI",
+  "type": "project",
+  "status": "portfolio_listed_repository_public",
+  "verification": "partially_verified",
+  "summary": "Portfolio describes an AI agent for Wumpus World that navigates a hazardous environment, reasons from clues, and attempts to find gold while avoiding threats.",
+  "technologies": [
+    "Python",
+    "Artificial Intelligence",
+    "Game AI"
+  ],
+  "links": {
+    "repository": "https://github.com/YASH-ANPAT/wumpus-game-ai-agent-project",
+    "demo": "https://wumpus-and-gold.onrender.com/"
+  },
+  "sources": [
+    "https://github.com/YASH-ANPAT/wumpus-game-ai-agent-project",
+    "https://raw.githubusercontent.com/YASH-ANPAT/yash-portfolio/main/src/data/projects.js"
+  ],
+  "deployment_status": "deployment_link_listed_not_live_verified",
+  "unknowns": [
+    "Agent algorithm details",
+    "Current demo availability"
+  ]
+}

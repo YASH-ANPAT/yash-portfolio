@@ -1,0 +1,31 @@
+{
+  "id": "medikeeps",
+  "title": "MediKeeps - Hospital Management System",
+  "type": "project",
+  "status": "public_group_project",
+  "verification": "repository_readme_reviewed",
+  "summary": "A first-year group project intended to store patient information digitally so it can be referenced during medical emergencies.",
+  "technologies": [
+    "Python",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Node.js/Express components",
+    "Database components"
+  ],
+  "team_context": "The repository README lists Yash Anpat among six group members and describes it as a first-year project-based learning project at AISSMS College of Engineering, Pune.",
+  "links": {
+    "repository": "https://github.com/YASH-ANPAT/medikeeps-hospital-management-system",
+    "demo": null
+  },
+  "sources": [
+    "https://github.com/YASH-ANPAT/medikeeps-hospital-management-system"
+  ],
+  "unknowns": [
+    "Current functionality and deployment",
+    "Exact individual contribution"
+  ],
+  "limitations": [
+    "Describe as a group project; do not attribute the entire implementation solely to Yash."
+  ]
+}

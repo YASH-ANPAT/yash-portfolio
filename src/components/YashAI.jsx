@@ -9,10 +9,103 @@ const suggestedQuestions = [
   "What is he currently building?",
 ];
 
+function safeUrl(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" || url.protocol === "http:" ? url.href : null;
+  } catch {
+    return null;
+  }
+}
+
+function renderInlineMarkdown(text, keyPrefix) {
+  const tokenPattern = /(\*\*[^*\n]+\*\*|`[^`\n]+`|\[[^\]]+\]\(https?:\/\/[^)\s]+\)|<https?:\/\/[^>\s]+>)/g;
+  const parts = [];
+  let lastIndex = 0;
+
+  for (const match of text.matchAll(tokenPattern)) {
+    const [token] = match;
+    const index = match.index ?? 0;
+    if (index > lastIndex) parts.push(text.slice(lastIndex, index));
+
+    if (token.startsWith("**")) {
+      parts.push(<strong key={`${keyPrefix}-bold-${index}`}>{token.slice(2, -2)}</strong>);
+    } else if (token.startsWith("`")) {
+      parts.push(<code key={`${keyPrefix}-code-${index}`}>{token.slice(1, -1)}</code>);
+    } else {
+      const linkMatch = token.match(/^\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)$/)
+        || token.match(/^<(https?:\/\/[^>\s]+)>$/);
+      const href = safeUrl(linkMatch?.[2] || linkMatch?.[1]);
+      if (href) {
+        parts.push(
+          <a key={`${keyPrefix}-link-${index}`} href={href} target="_blank" rel="noreferrer">
+            {linkMatch?.[2] ? linkMatch[1] : href}
+          </a>
+        );
+      } else {
+        parts.push(token);
+      }
+    }
+
+    lastIndex = index + token.length;
+  }
+
+  if (lastIndex < text.length) parts.push(text.slice(lastIndex));
+  return parts;
+}
+
+function MarkdownContent({ content }) {
+  const lines = content.split(/\r?\n/);
+  const blocks = [];
+  let listItems = [];
+
+  const flushList = () => {
+    if (listItems.length === 0) return;
+    blocks.push(
+      <ul key={`list-${blocks.length}`}>
+        {listItems.map((item, index) => (
+          <li key={`item-${index}`}>{renderInlineMarkdown(item, `list-${index}`)}</li>
+        ))}
+      </ul>
+    );
+    listItems = [];
+  };
+
+  lines.forEach((line, index) => {
+    const trimmed = line.trim();
+    const listMatch = trimmed.match(/^[-*]\s+(.+)$/);
+    if (listMatch) {
+      listItems.push(listMatch[1]);
+      return;
+    }
+
+    flushList();
+    if (!trimmed) {
+      blocks.push(<div className="yash-ai-markdown-break" key={`break-${index}`} />);
+      return;
+    }
+
+    const headingMatch = trimmed.match(/^#{1,3}\s+(.+)$/);
+    if (headingMatch) {
+      blocks.push(
+        <h3 key={`heading-${index}`}>{renderInlineMarkdown(headingMatch[1], `heading-${index}`)}</h3>
+      );
+      return;
+    }
+
+    blocks.push(
+      <p key={`paragraph-${index}`}>{renderInlineMarkdown(trimmed, `paragraph-${index}`)}</p>
+    );
+  });
+
+  flushList();
+  return <div className="yash-ai-markdown">{blocks}</div>;
+}
+
 function Message({ message, onRetry }) {
   return (
     <article className={`yash-ai-message yash-ai-message-${message.role}`}>
-      <p>{message.content}</p>
+      <MarkdownContent content={message.content} />
       {message.sources?.length > 0 && (
         <div className="yash-ai-sources">
           {message.sources.map((source) => (

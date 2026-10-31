@@ -1,0 +1,47 @@
+{
+  "checked_on": "2026-10-13",
+  "links": [
+    {
+      "label": "Portfolio",
+      "url": "https://yash-anpat.vercel.app/",
+      "result": "Page title observed; rendered content unavailable to reader",
+      "status": "partially_verified"
+    },
+    {
+      "label": "GitHub profile",
+      "url": "https://github.com/YASH-ANPAT",
+      "result": "Public profile loads; shows 9 repositories and portfolio link",
+      "status": "verified"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/yash-anpat/",
+      "result": "Reader could not inspect page",
+      "status": "unverified"
+    },
+    {
+      "label": "AI Document Assistant demo",
+      "url": "https://yash-rag-chatbot.streamlit.app/",
+      "result": "Reader returned an error; this does not prove the site is down",
+      "status": "not_live_verified"
+    },
+    {
+      "label": "Predictive Maintenance demo",
+      "url": "https://predictive-maintenance-platform-gamma.vercel.app/",
+      "result": "Page response returned but interactive behavior not verified",
+      "status": "partially_verified"
+    },
+    {
+      "label": "Food Delivery demo",
+      "url": "https://food-delivery-time-prediction-nal6.onrender.com/",
+      "result": "Reader returned an error; this does not prove the site is down",
+      "status": "not_live_verified"
+    },
+    {
+      "label": "Wumpus demo",
+      "url": "https://wumpus-and-gold.onrender.com/",
+      "result": "Listed in portfolio source; not live-tested in this audit",
+      "status": "not_live_verified"
+    }
+  ]
+}

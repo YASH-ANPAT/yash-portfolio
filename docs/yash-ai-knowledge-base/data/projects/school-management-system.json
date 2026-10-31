@@ -1,0 +1,35 @@
+{
+  "id": "school-management-system",
+  "title": "School Management System",
+  "type": "project",
+  "status": "portfolio_listed_repository_unresolved",
+  "verification": "portfolio_source_only",
+  "summary": "Portfolio describes a system for managing student records and administrative operations.",
+  "technologies": [
+    "Python",
+    "SQL",
+    "HTML",
+    "CSS"
+  ],
+  "links": {
+    "repository": "https://github.com/YASH-ANPAT",
+    "demo": null
+  },
+  "link_status": {
+    "repository": "profile_only_dedicated_repository_unresolved",
+    "demo": "not_listed"
+  },
+  "sources": [
+    "https://raw.githubusercontent.com/YASH-ANPAT/yash-portfolio/main/src/data/projects.js"
+  ],
+  "unknowns": [
+    "Dedicated repository URL",
+    "Implementation details",
+    "Current runtime behavior"
+  ],
+  "limitations": [
+    "The current portfolio repository field points to the GitHub profile, not a dedicated School Management System repository.",
+    "Do not infer a dedicated repository or implementation details from the profile link."
+  ],
+  "recommended_correction": "Keep the dedicated repository unresolved until a verified URL is found; then replace the profile link or remove the repository CTA."
+}

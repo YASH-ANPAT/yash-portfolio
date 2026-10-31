@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "YASH AI Knowledge Base Document",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/knowledgeRecord"
+    },
+    {
+      "$ref": "#/$defs/profileRecord"
+    },
+    {
+      "$ref": "#/$defs/aiLabsRecord"
+    },
+    {
+      "$ref": "#/$defs/linkStatusRecord"
+    }
+  ],
+  "$defs": {
+    "knowledgeRecord": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "type",
+        "status",
+        "verification",
+        "sources"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "verification": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "technologies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "links": {
+          "type": "object"
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "deployment_status": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "profileRecord": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "name",
+        "headline",
+        "status",
+        "verification",
+        "verified_facts",
+        "unknowns",
+        "links",
+        "limitations"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "const": "professional_profile"
+        },
+        "name": {
+          "type": "string"
+        },
+        "headline": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "verification": {
+          "type": "string"
+        },
+        "verified_facts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "claim",
+              "source",
+              "verification"
+            ],
+            "properties": {
+              "claim": {
+                "type": "string"
+              },
+              "source": {
+                "type": "string",
+                "format": "uri"
+              },
+              "verification": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "links": {
+          "type": "object"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "aiLabsRecord": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "source",
+        "verification",
+        "items",
+        "notes"
+      ],
+      "properties": {
+        "id": {
+          "const": "ai-labs"
+        },
+        "type": {
+          "const": "initiative_list"
+        },
+        "source": {
+          "type": "string",
+          "format": "uri"
+        },
+        "verification": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "title",
+              "full_title",
+              "status"
+            ],
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "full_title": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "linkStatusRecord": {
+      "type": "object",
+      "required": [
+        "checked_on",
+        "links"
+      ],
+      "properties": {
+        "checked_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "label",
+              "url",
+              "result",
+              "status"
+            ],
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "result": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

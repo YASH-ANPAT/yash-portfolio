@@ -1,0 +1,41 @@
+{
+  "id": "food-delivery-time-prediction",
+  "title": "Food Delivery Time Prediction",
+  "type": "project",
+  "status": "source_code_reviewed",
+  "verification": "source_code_reviewed",
+  "summary": "A Flask web application that estimates food delivery time from delivery-person inputs and geocoded restaurant/delivery locations using a serialized machine-learning model.",
+  "technologies": [
+    "Python",
+    "Flask",
+    "Pandas",
+    "Scikit-learn",
+    "OpenCage",
+    "HTML",
+    "CSS"
+  ],
+  "capabilities_verified_in_source": [
+    "Loads a serialized model from model.pkl",
+    "Uses OpenCage API to geocode restaurant and delivery locations",
+    "Builds a 29-feature model input",
+    "Returns estimated delivery time in minutes"
+  ],
+  "important_limitations": [
+    "Several encoded feature values (including traffic, order type, vehicle, festival and city categories) are hardcoded in the inspected app.py.",
+    "Do not claim all conditions are dynamically captured."
+  ],
+  "links": {
+    "repository": "https://github.com/YASH-ANPAT/food-delivery-time-prediction",
+    "demo": "https://food-delivery-time-prediction-nal6.onrender.com/"
+  },
+  "sources": [
+    "https://github.com/YASH-ANPAT/food-delivery-time-prediction",
+    "https://raw.githubusercontent.com/YASH-ANPAT/food-delivery-time-prediction/main/app.py",
+    "https://github.com/YASH-ANPAT/food-delivery-time-prediction/blob/main/requirements.txt"
+  ],
+  "deployment_status": "deployment_link_listed_not_live_verified",
+  "unknowns": [
+    "Model accuracy and evaluation metrics",
+    "Current demo availability"
+  ]
+}

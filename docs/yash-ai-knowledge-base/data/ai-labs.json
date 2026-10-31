@@ -1,0 +1,39 @@
+{
+  "id": "ai-labs",
+  "type": "initiative_list",
+  "source": "https://raw.githubusercontent.com/YASH-ANPAT/yash-portfolio/main/src/data/aiLabs.js",
+  "verification": "public_source_reviewed",
+  "items": [
+    {
+      "title": "A.U.R.A.",
+      "full_title": "Automated Retrieval, Understanding & Analysis",
+      "status": "building"
+    },
+    {
+      "title": "Temporal ML",
+      "full_title": "Time-Series Predictive Maintenance & RUL Prediction",
+      "status": "planned"
+    },
+    {
+      "title": "Autonomous ML Engine",
+      "full_title": "Automated Machine Learning Experimentation",
+      "status": "planned"
+    },
+    {
+      "title": "Fraud Intelligence",
+      "full_title": "Real-Time Fraud Detection & Anomaly Intelligence",
+      "status": "planned"
+    },
+    {
+      "title": "Multimodal Intelligence",
+      "full_title": "Multimodal Document & Information Understanding",
+      "status": "planned"
+    }
+  ],
+  "notes": [
+    "The supplied Phase 1 audit found four items in the public main-branch source reviewed on 2026-10-13.",
+    "The current local src/data/aiLabs.js contains five items and retains Temporal ML as PLANNED.",
+    "Temporal ML is included here as a planned local application item, but its presence is not confirmed by the audited public main-branch source.",
+    "Do not describe Temporal ML as implemented, completed, publicly documented, or deployed without additional evidence."
+  ]
+}

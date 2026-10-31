@@ -1,0 +1,44 @@
+{
+  "id": "ai-document-assistant",
+  "title": "AI Document Assistant",
+  "type": "project",
+  "status": "repository_documented",
+  "verification": "source_and_readme_reviewed",
+  "summary": "A Retrieval-Augmented Generation chatbot for asking questions about uploaded PDF documents using semantic search and an open-weight language model.",
+  "technologies": [
+    "Python",
+    "Streamlit",
+    "Sentence Transformers",
+    "FAISS",
+    "GPT-OSS 20B",
+    "Groq"
+  ],
+  "capabilities_documented": [
+    "PDF upload and page-aware text extraction",
+    "Overlapping text chunking",
+    "Semantic embeddings using Sentence Transformers",
+    "FAISS vector similarity search and top-k context retrieval",
+    "Grounded question answering",
+    "Source and page references",
+    "Hallucination-aware prompting"
+  ],
+  "links": {
+    "repository": "https://github.com/YASH-ANPAT/ai-document-assistant",
+    "demo": "https://yash-rag-chatbot.streamlit.app/"
+  },
+  "sources": [
+    "https://github.com/YASH-ANPAT/ai-document-assistant",
+    "https://github.com/YASH-ANPAT/ai-document-assistant/blob/main/README.md",
+    "https://github.com/YASH-ANPAT/ai-document-assistant/blob/main/rag_pipeline.py"
+  ],
+  "deployment_status": "deployment_link_listed_not_live_verified",
+  "unknowns": [
+    "Measured answer accuracy",
+    "Latency under load",
+    "Current demo availability",
+    "Evaluation results"
+  ],
+  "limitations": [
+    "Do not claim a quantified accuracy or production-grade reliability without test evidence."
+  ]
+}

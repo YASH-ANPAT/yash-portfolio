@@ -58,8 +58,13 @@ body.yash-ai-open {
 }
 
 .yash-ai-backdrop {
+  --yash-ai-navbar-height: 5.25rem;
+  --yash-ai-panel-bottom-gap: 6.25rem;
   position: fixed;
-  inset: 0;
+  top: var(--yash-ai-navbar-height);
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 44;
   background: rgba(0, 0, 0, 0.76);
   backdrop-filter: blur(12px);
@@ -69,11 +74,11 @@ body.yash-ai-open {
 .yash-ai-panel {
   position: absolute;
   right: 1.5rem;
-  bottom: 6.25rem;
+  bottom: var(--yash-ai-panel-bottom-gap);
   display: flex;
   width: min(28rem, calc(100vw - 3rem));
-  height: min(42rem, calc(100dvh - 8rem));
-  max-height: calc(100dvh - 8rem);
+  height: min(42rem, calc(100dvh - var(--yash-ai-navbar-height) - var(--yash-ai-panel-bottom-gap)));
+  max-height: calc(100dvh - var(--yash-ai-navbar-height) - var(--yash-ai-panel-bottom-gap));
   min-height: 0;
   flex-direction: column;
   overflow: hidden;
@@ -175,9 +180,53 @@ body.yash-ai-open {
   line-height: 1.55;
 }
 
-.yash-ai-message p {
+.yash-ai-markdown {
+  overflow-wrap: anywhere;
+}
+
+.yash-ai-markdown p {
   margin: 0;
-  white-space: pre-wrap;
+}
+
+.yash-ai-markdown p + p,
+.yash-ai-markdown p + ul,
+.yash-ai-markdown ul + p,
+.yash-ai-markdown h3 + p {
+  margin-top: 0.7rem;
+}
+
+.yash-ai-markdown h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.yash-ai-markdown ul {
+  margin: 0.55rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.yash-ai-markdown li {
+  margin-top: 0.3rem;
+  padding-left: 0.15rem;
+}
+
+.yash-ai-markdown a {
+  color: var(--accent);
+  overflow-wrap: anywhere;
+}
+
+.yash-ai-markdown code {
+  border: 1px solid var(--border-subtle);
+  background: #080808;
+  color: var(--text-primary);
+  padding: 0.08rem 0.25rem;
+  font-size: 0.9em;
+}
+
+.yash-ai-markdown-break {
+  height: 0.65rem;
 }
 
 .yash-ai-message-user {
@@ -309,10 +358,10 @@ body.yash-ai-open {
 
   .yash-ai-panel {
     right: 0.75rem;
-    bottom: calc(5.5rem + env(safe-area-inset-bottom));
+    --yash-ai-panel-bottom-gap: calc(5.5rem + env(safe-area-inset-bottom));
     width: calc(100vw - 1.5rem);
-    height: calc(100dvh - 6.75rem - env(safe-area-inset-bottom));
-    max-height: calc(100dvh - 6.75rem - env(safe-area-inset-bottom));
+    height: calc(100dvh - var(--yash-ai-navbar-height) - var(--yash-ai-panel-bottom-gap));
+    max-height: calc(100dvh - var(--yash-ai-navbar-height) - var(--yash-ai-panel-bottom-gap));
   }
 
   .yash-ai-header,
