@@ -92,7 +92,9 @@ export default async function handler(request, response) {
   }
 
   const { name, email, subject, message } = payload;
-  const providerResponse = await fetch("https://api.resend.com/emails", {
+  let providerResponse;
+  try {
+    providerResponse = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${RESEND_API_KEY}`,
@@ -106,7 +108,14 @@ export default async function handler(request, response) {
       subject: `[Portfolio] ${subject.trim()}`,
       text: `Name: ${name.trim()}\nEmail: ${email.trim()}\n\n${message.trim()}`,
     }),
-  });
+      signal: AbortSignal.timeout(15000),
+    });
+  } catch (error) {
+    console.error("Email provider request failed:", error);
+    return sendJson(response, 502, {
+      message: "The email provider could not be reached.",
+    });
+  }
 
   if (!providerResponse.ok) {
     console.error("Email provider rejected the message:", providerResponse.status);

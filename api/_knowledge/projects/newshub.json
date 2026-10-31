@@ -1,0 +1,36 @@
+{
+  "id": "newshub",
+  "title": "NewsHub",
+  "type": "project",
+  "status": "portfolio_listed_repository_public",
+  "verification": "partially_verified",
+  "summary": "Portfolio describes a Flask application that fetches news using NewsAPI and allows users to search topics and view articles.",
+  "technologies": [
+    "Python",
+    "Flask",
+    "HTML",
+    "CSS",
+    "REST API"
+  ],
+  "capabilities_documented": [
+    "Flask application structure with templates and static files",
+    "NewsAPI-based news retrieval and topic search as described by the portfolio",
+    "Deployment configuration present in the public repository"
+  ],
+  "links": {
+    "repository": "https://github.com/YASH-ANPAT/news-api-flask-project",
+    "demo": null
+  },
+  "sources": [
+    "https://github.com/YASH-ANPAT/news-api-flask-project",
+    "https://raw.githubusercontent.com/YASH-ANPAT/yash-portfolio/main/src/data/projects.js"
+  ],
+  "unknowns": [
+    "Current runtime behavior",
+    "NewsAPI key/configuration",
+    "Whether any deployment exists"
+  ],
+  "limitations": [
+    "The public repository and portfolio description do not establish current deployment availability or runtime behavior."
+  ]
+}

@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import AILabsPage from "./pages/AILabs";
 import AboutPage from "./pages/About";
+import YashAI from "./components/YashAI";
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -75,6 +76,7 @@ export default function App() {
         </main>
 
         <Footer />
+        <YashAI />
       </div>
     </BrowserRouter>
   );

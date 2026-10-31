@@ -35,3 +35,36 @@ client IP to five attempts per hour, and does not return provider credentials
 or provider response details to the client. The rate limit is intentionally
 lightweight and in-memory; a distributed rate limiter should replace it if the
 site receives significant traffic or multiple serverless instances.
+
+## Local API development
+
+`npm run dev` starts the Vite frontend only. It does not execute Vercel
+serverless functions. Use `npm run dev:vercel` to run the frontend and both
+`/api/send-email` and `/api/assistant` locally through the linked Vercel
+project:
+
+1. Make sure the Vercel CLI is available through `npx vercel`.
+2. Run `npm run dev:vercel`.
+3. Configure local-only values with `vercel env pull .env.local` or an existing
+   `.env.local`; never commit that file or print its values.
+
+The assistant requires `GROQ_API_KEY` and optionally `GROQ_MODEL`
+(`openai/gpt-oss-20b`). Email delivery requires `RESEND_API_KEY`,
+`RESEND_FROM_EMAIL`, and `CONTACT_TO_EMAIL`. These variables must remain
+server-side and should be configured separately for Vercel Preview and
+Production.
+
+## YASH AI configuration
+
+The portfolio assistant uses the Groq OpenAI-compatible chat-completions API
+from the server-side `api/assistant.js` function. Configure these Vercel
+environment variables for the assistant:
+
+- `GROQ_API_KEY` — server-only Groq API key; never expose it through `VITE_*`.
+- `GROQ_MODEL` — optional model ID; defaults to `openai/gpt-oss-20b`.
+
+The assistant returns a clear configuration error when `GROQ_API_KEY` is
+absent; it never fabricates a model response. Its deployed runtime package
+contains only the verified public records needed for retrieval. The original
+knowledge-base audit reports and answer-policy files are not included in the
+assistant context.

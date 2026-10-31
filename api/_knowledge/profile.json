@@ -1,0 +1,38 @@
+{
+  "id": "profile-yash-anpat",
+  "type": "professional_profile",
+  "name": "Yash Anpat",
+  "headline": "AIML Engineer & Software Developer",
+  "headline_source": "https://yash-anpat.vercel.app/",
+  "status": "public_profile",
+  "verification": "partially_verified",
+  "verified_facts": [
+    {
+      "claim": "Public GitHub profile exists and links to the portfolio website.",
+      "source": "https://github.com/YASH-ANPAT",
+      "verification": "verified_public_page"
+    },
+    {
+      "claim": "Portfolio site title identifies Yash Anpat as AIML Engineer & Software Developer.",
+      "source": "https://yash-anpat.vercel.app/",
+      "verification": "page_title_observed"
+    }
+  ],
+  "unknowns": [
+    "Current degree title, institution, expected graduation date",
+    "Current CGPA or percentage",
+    "Current internship/employment history",
+    "Certifications, awards, hackathon outcomes, leadership roles",
+    "Current availability and preferred roles"
+  ],
+  "links": {
+    "portfolio": "https://yash-anpat.vercel.app/",
+    "github": "https://github.com/YASH-ANPAT",
+    "linkedin": "https://www.linkedin.com/in/yash-anpat/"
+  },
+  "limitations": [
+    "The portfolio's rendered content was not exposed to the web reader, so only the page title and public source files were inspected.",
+    "LinkedIn page content could not be inspected by the web reader.",
+    "Do not fill unknown profile fields from inference."
+  ]
+}

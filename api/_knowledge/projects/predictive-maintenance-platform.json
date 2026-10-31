@@ -1,0 +1,47 @@
+{
+  "id": "predictive-maintenance-platform",
+  "title": "Predictive Equipment Maintenance Platform",
+  "type": "project",
+  "status": "repository_documented",
+  "verification": "readme_and_repository_reviewed",
+  "summary": "A full-stack predictive-maintenance application that uses equipment telemetry and an XGBoost classifier to predict failure risk, records telemetry and predictions in PostgreSQL, and presents results in a React dashboard.",
+  "technologies": [
+    "Python",
+    "XGBoost",
+    "FastAPI",
+    "PostgreSQL",
+    "React",
+    "Vite",
+    "SHAP",
+    "Docker"
+  ],
+  "capabilities_documented": [
+    "Equipment and telemetry management",
+    "Failure prediction from latest telemetry",
+    "Risk policy and maintenance recommendations",
+    "Prediction history and explainability",
+    "Telemetry simulator for demonstration"
+  ],
+  "model_notes": [
+    "README says model is trained on the AI4I 2020 Predictive Maintenance Dataset.",
+    "README documents six input features: machine type, air temperature, process temperature, rotational speed, torque, and tool wear."
+  ],
+  "links": {
+    "repository": "https://github.com/YASH-ANPAT/predictive-maintenance-platform",
+    "demo": "https://predictive-maintenance-platform-gamma.vercel.app/"
+  },
+  "sources": [
+    "https://github.com/YASH-ANPAT/predictive-maintenance-platform",
+    "https://github.com/YASH-ANPAT/predictive-maintenance-platform/blob/main/README.md"
+  ],
+  "deployment_status": "deployment_link_listed_not_end_to_end_verified",
+  "unknowns": [
+    "Live backend and database health",
+    "Real-world validation",
+    "Measured model performance",
+    "Production reliability"
+  ],
+  "limitations": [
+    "Do not imply validation on live industrial equipment without evidence."
+  ]
+}
