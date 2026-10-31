@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
 const UNKNOWN_ANSWER =
   "I don't have verified information about that yet. You can explore Yash's portfolio or contact him directly.";
@@ -18,7 +19,8 @@ const projectFiles = [
 ];
 
 function readKnowledge(path) {
-  return JSON.parse(readFileSync(new URL(`./_knowledge/${path}`, import.meta.url), "utf8"));
+  const projectRoot = globalThis.process?.cwd?.() || ".";
+  return JSON.parse(readFileSync(join(projectRoot, "api", "_knowledge", path), "utf8"));
 }
 
 const profile = readKnowledge("profile.json");
